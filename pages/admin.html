@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لوحة الإدارة — BADHAKH</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    body { background: #0D0D0D; }
+    .admin-wrapper {
+      display: flex;
+      min-height: 100vh;
+      padding-top: 0;
+    }
+    /* Sidebar */
+    .admin-sidebar {
+      width: 260px;
+      background: #111111;
+      border-left: 1px solid rgba(201,169,110,0.15);
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100vh;
+      z-index: 100;
+      overflow-y: auto;
+    }
+    .admin-logo {
+      padding: 2rem 1.5rem;
+      border-bottom: 1px solid rgba(201,169,110,0.15);
+      text-align: center;
+    }
+    .admin-logo .logo-en {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: #C9A96E;
+      letter-spacing: 4px;
+    }
+    .admin-logo .logo-ar {
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 2px;
+      margin-top: 0.25rem;
+    }
+    .admin-nav {
+      padding: 1.5rem 0;
+      flex: 1;
+    }
+    .admin-nav-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.85rem 1.5rem;
+      color: rgba(255,255,255,0.55);
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      border-right: 3px solid transparent;
+      text-decoration: none;
+    }
+    .admin-nav-item:hover,
+    .admin-nav-item.active {
+      color: #C9A96E;
+      background: rgba(201,169,110,0.06);
+      border-right-color: #C9A96E;
+    }
+    .admin-nav-item .nav-icon {
+      font-size: 1.1rem;
+      width: 20px;
+      text-align: center;
+    }
+    .admin-nav-section {
+      padding: 1rem 1.5rem 0.5rem;
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .admin-logout {
+      padding: 1.5rem;
+      border-top: 1px solid rgba(201,169,110,0.15);
+    }
+    .admin-logout a {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(255,80,80,0.7);
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .admin-logout a:hover { color: #ff5050; }
+
+    /* Main content */
+    .admin-main {
+      margin-left: 0;
+      margin-right: 260px;
+      flex: 1;
+      padding: 2rem;
+      min-height: 100vh;
+    }
+    .admin-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(201,169,110,0.12);
+    }
+    .admin-page-title h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: #ffffff;
+      margin: 0;
+    }
+    .admin-page-title p {
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.35);
+      margin: 0.2rem 0 0;
+    }
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .topbar-search {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(201,169,110,0.2);
+      border-radius: 8px;
+      padding: 0.5rem 1rem;
+      color: #fff;
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.85rem;
+      outline: none;
+      width: 200px;
+      direction: rtl;
+    }
+    .topbar-search::placeholder { color: rgba(255,255,255,0.3); }
+    .topbar-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #C9A96E, #A07840);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.85rem;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .topbar-notif {
+      position: relative;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.6);
+      transition: background 0.3s;
+    }
+    .topbar-notif:hover { background: rgba(201,169,110,0.15); color: #C9A96E; }
+    .notif-badge {
+      position: absolute;
+      top: 4px;
+      left: 6px;
+      width: 8px;
+      height: 8px;
+      background: #C9A96E;
+      border-radius: 50%;
+      border: 2px solid #0D0D0D;
+    }
+
+    /* Stats grid */
+    .admin-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+    .stat-card {
+      background: #111111;
+      border: 1px solid rgba(201,169,110,0.12);
+      border-radius: 12px;
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .stat-card:hover {
+      border-color: rgba(201,169,110,0.35);
+      transform: translateY(-3px);
+    }
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 60px;
+      height: 60px;
+      background: radial-gradient(circle, rgba(201,169,110,0.08) 0%, transparent 70%);
+    }
+    .stat-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+      opacity: 0.8;
+    }
+    .stat-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: #C9A96E;
+      font-weight: 700;
+      line-height: 1;
+    }
+    .stat-label {
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.45);
+      margin-top: 0.4rem;
+    }
+    .stat-change {
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.75rem;
+      margin-top: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .stat-change.up { color: #4ade80; }
+    .stat-change.down { color: #f87171; }
+
+    /* Two col layout */
+    .admin-two-col {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    /* Table card */
+    .admin-card {
+      background: #111111;
+      border: 1px solid rgba(201,169,110,0.12);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .admin-card-header {
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid rgba(201,169,110,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .admin-card-header h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: #ffffff;
+      margin: 0;
+    }
+    .admin-card-header span {
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.75rem;
+      color: #C9A96E;
+      cursor: pointer;
+    }
+    .admin-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.85rem;
+    }
+    .admin-table thead th {
+      padding: 0.9rem 1.5rem;
+      text-align: right;
+      color: rgba(255,255,255,0.35);
+      font-weight: 500;
+      font-size: 0.75rem;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid rgba(201,169,110,0.08);
+      white-space: nowrap;
+    }
+    .admin-table tbody tr {
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      transition: background 0.2s;
+    }
+    .admin-table tbody tr:hover { background: rgba(201,169,110,0.04); }
+    .admin-table tbody tr:last-child { border-bottom: none; }
+    .admin-table tbody td {
+      padding: 1rem 1.5rem;
+      color: rgba(255,255,255,0.75);
+      vertical-align: middle;
+    }
+    .client-info { display: flex; align-items: center; gap: 0.75rem; }
+    .client-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #C9A96E44, #A0784044);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      color: #C9A96E;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+    .client-name { color: #fff; font-weight: 500; }
+    .client-email { font-size: 0.75rem; color: rgba(255,255,255,0.35); }
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.72rem;
+      font-weight: 600;
+    }
+    .badge-new { background: rgba(201,169,110,0.15); color: #C9A96E; }
+    .badge-progress { background: rgba(59,130,246,0.15); color: #60a5fa; }
+    .badge-done { background: rgba(74,222,128,0.15); color: #4ade80; }
+    .badge-pending { background: rgba(251,191,36,0.15); color: #fbbf24; }
+    .badge-cancelled { background: rgba(248,113,113,0.15); color: #f87171; }
+    .action-btns { display: flex; gap: 0.5rem; }
+    .action-btn {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.05);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      transition: all 0.2s;
+    }
+    .action-btn:hover { background: rgba(201,169,110,0.15); }
+
+    /* Recent activity side panel */
+    .activity-list { padding: 0.5rem 0; }
+    .activity-item {
+      padding: 1rem 1.5rem;
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .activity-item:last-child { border-bottom: none; }
+    .activity-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #C9A96E;
+      flex-shrink: 0;
+      margin-top: 5px;
+    }
+    .activity-dot.blue { background: #60a5fa; }
+    .activity-dot.green { background: #4ade80; }
+    .activity-dot.red { background: #f87171; }
+    .activity-text {
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.5;
+    }
+    .activity-text strong { color: #fff; }
+    .activity-time {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.25);
+      margin-top: 0.2rem;
+    }
+
+    /* Chart placeholder */
+    .chart-placeholder {
+      padding: 1.5rem;
+    }
+    .chart-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 0.5rem;
+      height: 120px;
+      padding-top: 1rem;
+    }
+    .chart-bar-wrap {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      height: 100%;
+      justify-content: flex-end;
+    }
+    .chart-bar {
+      width: 100%;
+      border-radius: 4px 4px 0 0;
+      background: linear-gradient(to top, #A07840, #C9A96E);
+      transition: height 0.8s cubic-bezier(0.4,0,0.2,1);
+      min-height: 4px;
+      position: relative;
+    }
+    .chart-bar.active { background: linear-gradient(to top, #C9A96E, #F0D99B); }
+    .chart-bar:hover::after {
+      content: attr(data-val);
+      position: absolute;
+      top: -24px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #C9A96E;
+      color: #0D0D0D;
+      font-size: 0.65rem;
+      font-family: 'Cairo', sans-serif;
+      padding: 2px 6px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+    .chart-label {
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* Quick actions */
+    .quick-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      padding: 1.25rem;
+    }
+    .quick-btn {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(201,169,110,0.15);
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+    }
+    .quick-btn:hover {
+      background: rgba(201,169,110,0.08);
+      border-color: rgba(201,169,110,0.4);
+    }
+    .quick-btn-icon { font-size: 1.3rem; margin-bottom: 0.4rem; }
+    .quick-btn-label {
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.55);
+    }
+
+    /* Bottom row */
+    .admin-three-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.25rem;
+    }
+
+    /* Project progress */
+    .project-list { padding: 0.5rem 0; }
+    .project-item {
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .project-item:last-child { border-bottom: none; }
+    .project-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.6rem;
+    }
+    .project-name {
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.85rem;
+      color: #fff;
+      font-weight: 500;
+    }
+    .project-pct {
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.75rem;
+      color: #C9A96E;
+    }
+    .project-bar-bg {
+      height: 4px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .project-bar-fill {
+      height: 100%;
+      background: linear-gradient(to left, #C9A96E, #F0D99B);
+      border-radius: 2px;
+      transition: width 1s ease;
+    }
+    .project-sub {
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.3);
+      margin-top: 0.4rem;
+    }
+
+    /* Team */
+    .team-list { padding: 0.5rem 0; }
+    .team-item {
+      padding: 0.85rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .team-item:last-child { border-bottom: none; }
+    .team-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #C9A96E33, #A0784033);
+      border: 1px solid rgba(201,169,110,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      color: #C9A96E;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+    .team-name {
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.85rem;
+      color: #fff;
+      font-weight: 500;
+    }
+    .team-role {
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.35);
+    }
+    .team-status {
+      margin-right: auto;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .team-status.online { background: #4ade80; box-shadow: 0 0 6px #4ade80; }
+    .team-status.busy { background: #fbbf24; }
+    .team-status.offline { background: rgba(255,255,255,0.2); }
+
+    @media (max-width: 1200px) {
+      .admin-stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .admin-two-col { grid-template-columns: 1fr; }
+      .admin-three-col { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .admin-sidebar { display: none; }
+      .admin-main { margin-right: 0; padding: 1rem; }
+      .admin-stats-grid { grid-template-columns: 1fr 1fr; }
+      .admin-three-col { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="admin-wrapper">
+
+    <!-- Sidebar -->
+    <aside class="admin-sidebar">
+      <div class="admin-logo">
+        <div class="logo-en">BADHAKH</div>
+        <div class="logo-ar">لوحة الإدارة</div>
+      </div>
+      <nav class="admin-nav">
+        <div class="admin-nav-section">الرئيسية</div>
+        <a href="admin.html" class="admin-nav-item active">
+          <span class="nav-icon">⊞</span>
+          <span>نظرة عامة</span>
+        </a>
+        <div class="admin-nav-section">إدارة الأعمال</div>
+        <a href="#" class="admin-nav-item">
+          <span class="nav-icon">📋</span>
+          <span>طلبات الخدمة</span>
+          <span style="margin-right:auto;background:rgba(201,169,110,0.2);color:#C9A96E;font-size:0.65rem;padding:2px 6px;border-radius:10px;">12</span>
+        </a>
+        <a href="#" class="admin-nav-item">
+          <span class="nav-icon">🏗️</span>
+          <span>المشاريع</span>
+        </a>
+        <a href="#" class="admin-nav-item">
+          <span class="nav-icon">👥</span>
+          <span>العملاء</span>
+        </a>
+        <a href="#" class="admin-nav-item">
+          <span class="nav-icon">🖼️</span>
+          <span>معرض الأعمال</span>
+        </a>
+        <div class="admin-nav-section">المحتوى</div>
+        <a href="#" class="admin-nav-item">
+          <span class="nav-icon">✍️</span>
+          <span>المدونة</span>
+        </a>
+        <a href="#" class="admin-nav-item">
+          <span class="nav-icon">🤝</span>
+          <span>الشركاء</span>
+        </a>
+        <div class="admin-nav-section">النظام</div>
+        <a href="#" class="admin-nav-item">
+          <span class="nav-icon">👤</span>
+          <span>الفريق</span>
+        </a>
+        <a href="#" class="admin-nav-item">
+          <span class="nav-icon">⚙️</span>
+          <span>الإعدادات</span>
+        </a>
+        <a href="#" class="admin-nav-item">
+          <span class="nav-icon">📊</span>
+          <span>التقارير</span>
+        </a>
+      </nav>
+      <div class="admin-logout">
+        <a href="../index.html">
+          <span>🚪</span>
+          <span>العودة للموقع</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="admin-main">
+      <!-- Top bar -->
+      <div class="admin-topbar">
+        <div class="admin-page-title">
+          <h1>نظرة عامة</h1>
+          <p>مرحباً بك في لوحة إدارة BADHAKH — آخر تحديث: منذ 5 دقائق</p>
+        </div>
+        <div class="topbar-right">
+          <input type="text" class="topbar-search" placeholder="🔍  بحث سريع...">
+          <div class="topbar-notif">
+            🔔
+            <span class="notif-badge"></span>
+          </div>
+          <div class="topbar-avatar">خا</div>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="admin-stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon">📋</div>
+          <div class="stat-value" data-count="147">0</div>
+          <div class="stat-label">إجمالي الطلبات</div>
+          <div class="stat-change up">▲ 12% مقارنة بالشهر الماضي</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">✅</div>
+          <div class="stat-value" data-count="89">0</div>
+          <div class="stat-label">مشاريع مكتملة</div>
+          <div class="stat-change up">▲ 8% مقارنة بالشهر الماضي</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">👥</div>
+          <div class="stat-value" data-count="213">0</div>
+          <div class="stat-label">إجمالي العملاء</div>
+          <div class="stat-change up">▲ 24 عميل جديد هذا الشهر</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">💰</div>
+          <div class="stat-value" style="font-size:1.5rem;" data-count="2.4">0</div>
+          <div class="stat-label">إيرادات الشهر (مليون ر.س)</div>
+          <div class="stat-change down">▼ 3% مقارنة بالشهر الماضي</div>
+        </div>
+      </div>
+
+      <!-- Two col -->
+      <div class="admin-two-col">
+        <!-- Requests table -->
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <h3>أحدث طلبات الخدمة</h3>
+            <span>عرض الكل ←</span>
+          </div>
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>العميل</th>
+                <th>نوع الخدمة</th>
+                <th>الميزانية</th>
+                <th>الحالة</th>
+                <th>إجراءات</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="client-info">
+                    <div class="client-avatar">سا</div>
+                    <div>
+                      <div class="client-name">سارة الأحمد</div>
+                      <div class="client-email">sara@example.com</div>
+                    </div>
+                  </div>
+                </td>
+                <td>تصميم داخلي فاخر</td>
+                <td>280,000 ر.س</td>
+                <td><span class="badge badge-new">جديد</span></td>
+                <td>
+                  <div class="action-btns">
+                    <button class="action-btn">👁</button>
+                    <button class="action-btn">✏️</button>
+                    <button class="action-btn">✓</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="client-info">
+                    <div class="client-avatar">فا</div>
+                    <div>
+                      <div class="client-name">فارس المطيري</div>
+                      <div class="client-email">faris@example.com</div>
+                    </div>
+                  </div>
+                </td>
+                <td>تصميم خارجي وحدائق</td>
+                <td>450,000 ر.س</td>
+                <td><span class="badge badge-progress">قيد التنفيذ</span></td>
+                <td>
+                  <div class="action-btns">
+                    <button class="action-btn">👁</button>
+                    <button class="action-btn">✏️</button>
+                    <button class="action-btn">✓</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="client-info">
+                    <div class="client-avatar">نو</div>
+                    <div>
+                      <div class="client-name">نورة الرشيد</div>
+                      <div class="client-email">noura@example.com</div>
+                    </div>
+                  </div>
+                </td>
+                <td>تأثيث وإضاءة</td>
+                <td>120,000 ر.س</td>
+                <td><span class="badge badge-done">مكتمل</span></td>
+                <td>
+                  <div class="action-btns">
+                    <button class="action-btn">👁</button>
+                    <button class="action-btn">✏️</button>
+                    <button class="action-btn">✓</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="client-info">
+                    <div class="client-avatar">خا</div>
+                    <div>
+                      <div class="client-name">خالد العتيبي</div>
+                      <div class="client-email">khalid@example.com</div>
+                    </div>
+                  </div>
+                </td>
+                <td>مشروع فيلا فاخرة</td>
+                <td>890,000 ر.س</td>
+                <td><span class="badge badge-pending">قيد المراجعة</span></td>
+                <td>
+                  <div class="action-btns">
+                    <button class="action-btn">👁</button>
+                    <button class="action-btn">✏️</button>
+                    <button class="action-btn">✓</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="client-info">
+                    <div class="client-avatar">من</div>
+                    <div>
+                      <div class="client-name">منى القحطاني</div>
+                      <div class="client-email">mona@example.com</div>
+                    </div>
+                  </div>
+                </td>
+                <td>مخطط وتصور ثلاثي</td>
+                <td>65,000 ر.س</td>
+                <td><span class="badge badge-new">جديد</span></td>
+                <td>
+                  <div class="action-btns">
+                    <button class="action-btn">👁</button>
+                    <button class="action-btn">✏️</button>
+                    <button class="action-btn">✓</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="client-info">
+                    <div class="client-avatar">عب</div>
+                    <div>
+                      <div class="client-name">عبدالله السبيعي</div>
+                      <div class="client-email">abdallah@example.com</div>
+                    </div>
+                  </div>
+                </td>
+                <td>تجديد وترميم</td>
+                <td>200,000 ر.س</td>
+                <td><span class="badge badge-cancelled">ملغى</span></td>
+                <td>
+                  <div class="action-btns">
+                    <button class="action-btn">👁</button>
+                    <button class="action-btn">✏️</button>
+                    <button class="action-btn">✓</button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Side panel -->
+        <div style="display:flex;flex-direction:column;gap:1.25rem;">
+          <!-- Chart -->
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <h3>الطلبات الشهرية</h3>
+              <span>2025</span>
+            </div>
+            <div class="chart-placeholder">
+              <div class="chart-bars">
+                <div class="chart-bar-wrap">
+                  <div class="chart-bar" style="height:40%" data-val="8"></div>
+                  <div class="chart-label">ينا</div>
+                </div>
+                <div class="chart-bar-wrap">
+                  <div class="chart-bar" style="height:55%" data-val="11"></div>
+                  <div class="chart-label">فبر</div>
+                </div>
+                <div class="chart-bar-wrap">
+                  <div class="chart-bar" style="height:70%" data-val="14"></div>
+                  <div class="chart-label">مار</div>
+                </div>
+                <div class="chart-bar-wrap">
+                  <div class="chart-bar" style="height:50%" data-val="10"></div>
+                  <div class="chart-label">أبر</div>
+                </div>
+                <div class="chart-bar-wrap">
+                  <div class="chart-bar" style="height:85%" data-val="17"></div>
+                  <div class="chart-label">ماي</div>
+                </div>
+                <div class="chart-bar-wrap">
+                  <div class="chart-bar active" style="height:100%" data-val="20"></div>
+                  <div class="chart-label">يون</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick actions -->
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <h3>إجراءات سريعة</h3>
+            </div>
+            <div class="quick-grid">
+              <a href="#" class="quick-btn">
+                <div class="quick-btn-icon">➕</div>
+                <div class="quick-btn-label">طلب جديد</div>
+              </a>
+              <a href="#" class="quick-btn">
+                <div class="quick-btn-icon">🖼️</div>
+                <div class="quick-btn-label">رفع صورة</div>
+              </a>
+              <a href="#" class="quick-btn">
+                <div class="quick-btn-icon">✍️</div>
+                <div class="quick-btn-label">مقال جديد</div>
+              </a>
+              <a href="#" class="quick-btn">
+                <div class="quick-btn-icon">📊</div>
+                <div class="quick-btn-label">تقرير</div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom three col -->
+      <div class="admin-three-col">
+        <!-- Projects -->
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <h3>تقدم المشاريع</h3>
+            <span>عرض الكل ←</span>
+          </div>
+          <div class="project-list">
+            <div class="project-item">
+              <div class="project-top">
+                <div class="project-name">فيلا الورود — الرياض</div>
+                <div class="project-pct">78%</div>
+              </div>
+              <div class="project-bar-bg">
+                <div class="project-bar-fill" style="width:78%"></div>
+              </div>
+              <div class="project-sub">تصميم داخلي فاخر • يستحق الاكتمال: أغسطس 2025</div>
+            </div>
+            <div class="project-item">
+              <div class="project-top">
+                <div class="project-name">قصر النخيل — جدة</div>
+                <div class="project-pct">45%</div>
+              </div>
+              <div class="project-bar-bg">
+                <div class="project-bar-fill" style="width:45%"></div>
+              </div>
+              <div class="project-sub">تصميم داخلي وخارجي • يستحق الاكتمال: نوفمبر 2025</div>
+            </div>
+            <div class="project-item">
+              <div class="project-top">
+                <div class="project-name">برج المروج — الدمام</div>
+                <div class="project-pct">92%</div>
+              </div>
+              <div class="project-bar-bg">
+                <div class="project-bar-fill" style="width:92%"></div>
+              </div>
+              <div class="project-sub">تصميم تجاري فندقي • يستحق الاكتمال: يوليو 2025</div>
+            </div>
+            <div class="project-item">
+              <div class="project-top">
+                <div class="project-name">بيت الأصالة — المدينة</div>
+                <div class="project-pct">20%</div>
+              </div>
+              <div class="project-bar-bg">
+                <div class="project-bar-fill" style="width:20%"></div>
+              </div>
+              <div class="project-sub">مشروع تراثي معاصر • يستحق الاكتمال: فبراير 2026</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Activity -->
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <h3>آخر الأنشطة</h3>
+            <span>مسح الكل</span>
+          </div>
+          <div class="activity-list">
+            <div class="activity-item">
+              <div class="activity-dot"></div>
+              <div>
+                <div class="activity-text"><strong>سارة الأحمد</strong> أرسلت طلب خدمة جديد للتصميم الداخلي</div>
+                <div class="activity-time">منذ 8 دقائق</div>
+              </div>
+            </div>
+            <div class="activity-item">
+              <div class="activity-dot blue"></div>
+              <div>
+                <div class="activity-text">تم تحديث حالة مشروع <strong>قصر النخيل</strong> إلى قيد التنفيذ</div>
+                <div class="activity-time">منذ 32 دقيقة</div>
+              </div>
+            </div>
+            <div class="activity-item">
+              <div class="activity-dot green"></div>
+              <div>
+                <div class="activity-text">اكتمل مشروع <strong>نورة الرشيد</strong> بنجاح وتم إرسال الفاتورة</div>
+                <div class="activity-time">منذ ساعتين</div>
+              </div>
+            </div>
+            <div class="activity-item">
+              <div class="activity-dot"></div>
+              <div>
+                <div class="activity-text"><strong>خالد العتيبي</strong> طلب مراجعة عرض السعر لمشروع الفيلا</div>
+                <div class="activity-time">منذ 3 ساعات</div>
+              </div>
+            </div>
+            <div class="activity-item">
+              <div class="activity-dot red"></div>
+              <div>
+                <div class="activity-text">تم إلغاء طلب <strong>عبدالله السبيعي</strong> بسبب تغيير في المتطلبات</div>
+                <div class="activity-time">أمس، 11:45 م</div>
+              </div>
+            </div>
+            <div class="activity-item">
+              <div class="activity-dot blue"></div>
+              <div>
+                <div class="activity-text">شريك جديد <strong>مجموعة الراشد</strong> انضم لشبكة الشركاء</div>
+                <div class="activity-time">أمس، 9:20 م</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Team -->
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <h3>حالة الفريق</h3>
+            <span>إدارة الفريق ←</span>
+          </div>
+          <div class="team-list">
+            <div class="team-item">
+              <div class="team-avatar">خر</div>
+              <div>
+                <div class="team-name">خالد الرشيد</div>
+                <div class="team-role">المدير الإبداعي</div>
+              </div>
+              <div class="team-status online"></div>
+            </div>
+            <div class="team-item">
+              <div class="team-avatar">لس</div>
+              <div>
+                <div class="team-name">لينا السعد</div>
+                <div class="team-role">مصممة داخلية أولى</div>
+              </div>
+              <div class="team-status online"></div>
+            </div>
+            <div class="team-item">
+              <div class="team-avatar">عن</div>
+              <div>
+                <div class="team-name">عمر ناصر</div>
+                <div class="team-role">مصمم خارجي</div>
+              </div>
+              <div class="team-status busy"></div>
+            </div>
+            <div class="team-item">
+              <div class="team-avatar">نخ</div>
+              <div>
+                <div class="team-name">نورا خالد</div>
+                <div class="team-role">متخصصة إضاءة وأثاث</div>
+              </div>
+              <div class="team-status online"></div>
+            </div>
+            <div class="team-item">
+              <div class="team-avatar">أم</div>
+              <div>
+                <div class="team-name">أحمد المنصور</div>
+                <div class="team-role">مهندس مشاريع</div>
+              </div>
+              <div class="team-status offline"></div>
+            </div>
+            <div class="team-item">
+              <div class="team-avatar">رح</div>
+              <div>
+                <div class="team-name">ريم الحربي</div>
+                <div class="team-role">منسقة مشاريع</div>
+              </div>
+              <div class="team-status busy"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // Counter animation
+    function animateCounters() {
+      document.querySelectorAll('[data-count]').forEach(el => {
+        const target = parseFloat(el.getAttribute('data-count'));
+        const isFloat = target % 1 !== 0;
+        let start = 0;
+        const duration = 1500;
+        const step = (timestamp) => {
+          if (!start) start = timestamp;
+          const progress = Math.min((timestamp - start) / duration, 1);
+          const val = progress * target;
+          el.textContent = isFloat ? val.toFixed(1) : Math.floor(val);
+          if (progress < 1) requestAnimationFrame(step);
+          else el.textContent = isFloat ? target.toFixed(1) : target;
+        };
+        requestAnimationFrame(step);
+      });
+    }
+    window.addEventListener('load', animateCounters);
+  </script>
+</body>
+</html>

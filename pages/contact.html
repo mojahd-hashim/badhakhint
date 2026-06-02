@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تواصل معنا — بذخ BADHAKH</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .map-placeholder { width:100%; height:350px; background:var(--dark-2); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; margin-top:4rem; position:relative; overflow:hidden; }
+    .map-placeholder::before { content:''; position:absolute; inset:0; background:radial-gradient(circle at 50% 50%, rgba(201,169,110,0.08) 0%, transparent 70%); }
+    .map-pin { font-size:3rem; position:relative; z-index:1; animation:bounce 2s ease infinite; }
+    .map-label { position:absolute; bottom:1.5rem; left:50%; transform:translateX(-50%); background:var(--gold); color:var(--dark); padding:0.5rem 1.5rem; font-size:0.75rem; font-weight:700; letter-spacing:0.1em; white-space:nowrap; }
+    @keyframes bounce { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-10px);} }
+    .faq-item { border-bottom:1px solid var(--border); padding:1.5rem 0; cursor:pointer; }
+    .faq-q { display:flex; justify-content:space-between; align-items:center; font-size:0.9rem; color:var(--white); font-weight:500; gap:1rem; }
+    .faq-q span { color:var(--gold); font-size:1.2rem; transition:transform 0.3s ease; }
+    .faq-a { font-size:0.83rem; color:var(--gray); line-height:1.8; margin-top:1rem; display:none; }
+    .faq-item.open .faq-a { display:block; }
+    .faq-item.open .faq-q span { transform:rotate(45deg); }
+  </style>
+</head>
+<body>
+<div id="loader"><div class="loader-content"><div class="loader-logo">BADHAKH</div><div class="loader-bar"></div></div></div>
+<div class="custom-cursor" id="cursor"></div><div class="cursor-follower" id="cursor-follower"></div>
+<div class="toast" id="toast">✓ تم إرسال رسالتك بنجاح — سنتواصل معك قريباً</div>
+
+<nav id="navbar">
+  <a href="../index.html" class="nav-logo">BADHAKH<span>فن التصميم الفاخر</span></a>
+  <ul class="nav-links">
+    <li><a href="../index.html">الرئيسية</a></li><li><a href="services.html">الخدمات</a></li>
+    <li><a href="portfolio.html">أعمالنا</a></li><li><a href="about.html">من نحن</a></li>
+    <li><a href="blog.html">المدونة</a></li><li><a href="partners.html">شركاؤنا</a></li>
+    <li><a href="contact.html" class="active">تواصل</a></li><li><a href="#" class="nav-cta" onclick="openModal()">طلب خدمة</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="../index.html" onclick="toggleMenu()">الرئيسية</a><a href="services.html" onclick="toggleMenu()">الخدمات</a>
+  <a href="portfolio.html" onclick="toggleMenu()">أعمالنا</a><a href="about.html" onclick="toggleMenu()">من نحن</a>
+  <a href="blog.html" onclick="toggleMenu()">المدونة</a><a href="partners.html" onclick="toggleMenu()">شركاؤنا</a>
+  <a href="contact.html" onclick="toggleMenu()">تواصل</a>
+  <a href="#" onclick="openModal();toggleMenu();" style="color:var(--gold);border:1px solid var(--gold);padding:0.8rem 2.5rem;">طلب خدمة</a>
+</div>
+
+<div class="page-hero" style="padding-top:85px;">
+  <div class="deco-text">Contact</div>
+  <div class="page-hero-content">
+    <div class="breadcrumb"><a href="../index.html">الرئيسية</a><span>/</span><span>تواصل معنا</span></div>
+    <h1>تواصل <span class="gold">معنا</span></h1>
+    <p>نحن هنا للإجابة على كل أسئلتك ومساعدتك في مشروعك</p>
+  </div>
+</div>
+
+<!-- Contact Section -->
+<section class="section contact-section">
+  <div class="contact-layout">
+    <div class="contact-info reveal">
+      <div class="section-label"><span>نسعد بخدمتك</span></div>
+      <h2>لنبدأ <span class="gold">حواراً</span></h2>
+      <div class="gold-divider"></div>
+      <p>سواء كانت لديك فكرة واضحة أو لا تزال في مرحلة التخطيط، فريقنا جاهز لمساعدتك في رسم ملامح مشروعك المثالي.</p>
+
+      <div class="contact-details">
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <h4>العنوان</h4>
+            <p>الرياض، المملكة العربية السعودية<br>حي العليا، طريق الملك فهد</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <h4>الهاتف</h4>
+            <p>+966 50 000 0000<br>+966 11 000 0000</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <h4>البريد الإلكتروني</h4>
+            <p>info@badhakh.com<br>projects@badhakh.com</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🕐</div>
+          <div>
+            <h4>ساعات العمل</h4>
+            <p>الأحد – الخميس: ٨ص – ٦م<br>السبت: ١٠ص – ٢م</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="padding:2rem;background:var(--cream);border-right:3px solid var(--gold);">
+        <div style="font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:0.6rem;font-weight:600;">💬 واتساب</div>
+        <p style="font-size:0.85rem;color:#555;margin-bottom:1rem;">للتواصل السريع والاستفسارات الفورية</p>
+        <a href="https://wa.me/966500000000" style="display:inline-flex;align-items:center;gap:0.5rem;background:#25D366;color:white;padding:0.7rem 1.5rem;font-size:0.82rem;font-weight:700;border-radius:2px;">
+          <span>💬</span> تواصل عبر واتساب
+        </a>
+      </div>
+    </div>
+
+    <div class="contact-form-wrap reveal">
+      <div class="form-title">أرسل لنا رسالة</div>
+      <div class="form-group">
+        <label>الاسم الكامل *</label>
+        <input type="text" placeholder="اسمك الكامل">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>البريد الإلكتروني *</label>
+          <input type="email" placeholder="example@email.com">
+        </div>
+        <div class="form-group">
+          <label>رقم الجوال *</label>
+          <input type="tel" placeholder="+966 5X XXX XXXX">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>الموضوع</label>
+        <select>
+          <option>— اختر موضوع الرسالة —</option>
+          <option>استفسار عن خدمة</option>
+          <option>طلب عرض سعر</option>
+          <option>استشارة مجانية</option>
+          <option>شراكة تجارية</option>
+          <option>توظيف وانضمام للفريق</option>
+          <option>أخرى</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>نوع المشروع</label>
+        <select>
+          <option>— اختر نوع المشروع —</option>
+          <option>فيلا سكنية</option>
+          <option>شقة أو بنتهاوس</option>
+          <option>مكتب تجاري</option>
+          <option>فندق أو منتجع</option>
+          <option>مطعم أو كافيه</option>
+          <option>متجر راقٍ</option>
+          <option>مشروع آخر</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>رسالتك *</label>
+        <textarea rows="5" placeholder="أخبرنا عن مشروعك، أفكارك، وأي تفاصيل تراها مهمة..."></textarea>
+      </div>
+      <button class="form-submit" onclick="submitContactForm()">إرسال الرسالة ✦</button>
+    </div>
+  </div>
+
+  <!-- Map placeholder -->
+  <div class="map-placeholder reveal">
+    <div>
+      <div class="map-pin">📍</div>
+      <div style="text-align:center;margin-top:1rem;font-size:0.8rem;color:var(--gray);">الرياض، المملكة العربية السعودية</div>
+    </div>
+    <div class="map-label">مقر بذخ — حي العليا، الرياض</div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" style="background:var(--dark-2);">
+  <div style="max-width:750px;margin:0 auto;">
+    <div class="section-header-centered reveal">
+      <div class="section-label"><span>أسئلة شائعة</span></div>
+      <h2 class="section-heading">الأسئلة <span class="gold">المتكررة</span></h2>
+      <div class="gold-divider gold-divider-center"></div>
+    </div>
+    <div style="margin-top:3rem;">
+      <div class="faq-item reveal" onclick="toggleFaq(this)">
+        <div class="faq-q">كم يستغرق مشروع التصميم الداخلي عادةً؟<span>+</span></div>
+        <div class="faq-a">يتفاوت الوقت حسب حجم المشروع وتعقيده. عادةً يستغرق مشروع الشقة المتوسطة 3-6 أشهر، بينما قد تمتد مشاريع الفللا الكبيرة إلى 9-18 شهراً. نلتزم دائماً بجدول زمني واضح نتفق عليه مسبقاً.</div>
+      </div>
+      <div class="faq-item reveal" onclick="toggleFaq(this)">
+        <div class="faq-q">هل تقدمون خدماتكم خارج الرياض؟<span>+</span></div>
+        <div class="faq-a">نعم! نعمل في جميع أنحاء المملكة العربية السعودية (جدة، الدمام، مكة، المدينة، أبها) وفي دول الخليج العربي. لدينا تجارب ناجحة في الإمارات والكويت والبحرين.</div>
+      </div>
+      <div class="faq-item reveal" onclick="toggleFaq(this)">
+        <div class="faq-q">ما هو الحد الأدنى للميزانية؟<span>+</span></div>
+        <div class="faq-a">نعمل مع مشاريع متنوعة الأحجام. الحد الأدنى للمشاريع السكنية يبدأ من 80,000 ريال للتصميم المتكامل. نقدم استشارة مجانية أولاً لفهم احتياجاتك وتقديم عرض سعر مناسب.</div>
+      </div>
+      <div class="faq-item reveal" onclick="toggleFaq(this)">
+        <div class="faq-q">هل تشمل خدماتكم التوريد والتنفيذ؟<span>+</span></div>
+        <div class="faq-a">نعم، نقدم خدمة متكاملة "من الفكرة حتى المفتاح" تشمل: التصميم الكامل، توريد المواد والأثاث، الإشراف على التنفيذ، وضمان الجودة حتى التسليم النهائي.</div>
+      </div>
+      <div class="faq-item reveal" onclick="toggleFaq(this)">
+        <div class="faq-q">هل يمكن مشاهدة التصميم قبل التنفيذ؟<span>+</span></div>
+        <div class="faq-a">بالتأكيد! نقدم مخططات تفصيلية وصور ثلاثية الأبعاد (3D Renders) واقعية جداً تُريك كيف سيبدو مشروعك بالكامل قبل بدء أي أعمال تنفيذية.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-main">
+    <div class="footer-brand"><a href="../index.html" class="nav-logo" style="display:inline-block;margin-bottom:1.2rem;">BADHAKH<span>فن التصميم الفاخر</span></a><p>نؤمن بأن كل فضاء يستحق أن يكون تحفة فنية.</p></div>
+    <div class="footer-col"><h4>الشركة</h4><a href="about.html">من نحن</a><a href="portfolio.html">أعمالنا</a><a href="blog.html">المدونة</a></div>
+    <div class="footer-col"><h4>الخدمات</h4><a href="services.html">التصميم الداخلي</a><a href="services.html">التصميم الخارجي</a></div>
+    <div class="footer-col"><h4>تواصل</h4><a href="tel:+966500000000">+966 50 000 0000</a><a href="mailto:info@badhakh.com">info@badhakh.com</a></div>
+  </div>
+  <div class="footer-bottom"><span>© 2025 BADHAKH — جميع الحقوق محفوظة</span></div>
+</footer>
+
+<div class="modal-overlay" id="serviceModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-title">طلب خدمة</div><p class="modal-sub">أرسل لنا تفاصيل مشروعك.</p>
+    <div class="form-group"><label>الاسم الكامل *</label><input type="text" placeholder="أدخل اسمك الكامل"></div>
+    <div class="form-row">
+      <div class="form-group"><label>البريد الإلكتروني</label><input type="email" placeholder="example@email.com"></div>
+      <div class="form-group"><label>رقم الجوال</label><input type="tel" placeholder="+966 5X XXX XXXX"></div>
+    </div>
+    <div class="form-group"><label>تفاصيل المشروع</label><textarea rows="4" placeholder="صف مشروعك..."></textarea></div>
+    <button class="form-submit" onclick="submitForm()">إرسال الطلب ✦</button>
+  </div>
+</div>
+<script src="../js/main.js"></script>
+<script>
+function submitContactForm() {
+  const toast = document.getElementById('toast');
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 4000);
+}
+function toggleFaq(el) {
+  document.querySelectorAll('.faq-item').forEach(i => { if(i !== el) i.classList.remove('open'); });
+  el.classList.toggle('open');
+}
+</script>
+</body>
+</html>

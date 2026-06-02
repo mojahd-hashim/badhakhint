@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>المدونة — بذخ BADHAKH</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .blog-full-grid { display:grid; grid-template-columns:2fr 1fr; gap:3rem; margin-top:4rem; }
+    .blog-main-list { display:grid; gap:2.5rem; }
+    .blog-main-card { display:grid; grid-template-columns:1fr 1.5fr; border:1px solid var(--border); overflow:hidden; transition:var(--transition); background:var(--dark-2); }
+    .blog-main-card:hover { border-color:var(--gold); }
+    .blog-main-thumb { aspect-ratio:4/3; display:flex; align-items:center; justify-content:center; font-size:4rem; position:relative; }
+    .blog-main-body { padding:2rem; }
+    .sidebar { display:grid; gap:2rem; }
+    .sidebar-card { background:var(--dark-2); border:1px solid var(--border); padding:2rem; }
+    .sidebar-title { font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:1.5rem; font-weight:600; }
+    .tag-cloud { display:flex; flex-wrap:wrap; gap:0.6rem; }
+    .tag { padding:0.4rem 0.9rem; border:1px solid var(--border); font-size:0.72rem; color:var(--gray); cursor:pointer; transition:var(--transition); }
+    .tag:hover { border-color:var(--gold); color:var(--gold); }
+    .recent-post { display:flex; gap:1rem; padding:1rem 0; border-bottom:1px solid var(--border); }
+    .recent-post:last-child { border-bottom:none; }
+    .recent-thumb { width:60px; height:60px; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:2rem; }
+    .recent-info h4 { font-size:0.82rem; color:var(--white); margin-bottom:0.3rem; line-height:1.4; }
+    .recent-info span { font-size:0.7rem; color:var(--gold); }
+    @media(max-width:900px){ .blog-full-grid{grid-template-columns:1fr;} .blog-main-card{grid-template-columns:1fr;} }
+  </style>
+</head>
+<body>
+<div id="loader"><div class="loader-content"><div class="loader-logo">BADHAKH</div><div class="loader-bar"></div></div></div>
+<div class="custom-cursor" id="cursor"></div><div class="cursor-follower" id="cursor-follower"></div>
+<div class="toast" id="toast">✓ تم الاشتراك بنجاح</div>
+
+<nav id="navbar">
+  <a href="../index.html" class="nav-logo">BADHAKH<span>فن التصميم الفاخر</span></a>
+  <ul class="nav-links">
+    <li><a href="../index.html">الرئيسية</a></li><li><a href="services.html">الخدمات</a></li>
+    <li><a href="portfolio.html">أعمالنا</a></li><li><a href="about.html">من نحن</a></li>
+    <li><a href="blog.html" class="active">المدونة</a></li><li><a href="partners.html">شركاؤنا</a></li>
+    <li><a href="contact.html">تواصل</a></li><li><a href="#" class="nav-cta" onclick="openModal()">طلب خدمة</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="../index.html" onclick="toggleMenu()">الرئيسية</a><a href="services.html" onclick="toggleMenu()">الخدمات</a>
+  <a href="portfolio.html" onclick="toggleMenu()">أعمالنا</a><a href="about.html" onclick="toggleMenu()">من نحن</a>
+  <a href="blog.html" onclick="toggleMenu()">المدونة</a><a href="partners.html" onclick="toggleMenu()">شركاؤنا</a>
+  <a href="contact.html" onclick="toggleMenu()">تواصل</a>
+  <a href="#" onclick="openModal();toggleMenu();" style="color:var(--gold);border:1px solid var(--gold);padding:0.8rem 2.5rem;">طلب خدمة</a>
+</div>
+
+<div class="page-hero" style="padding-top:85px;">
+  <div class="deco-text">Blog</div>
+  <div class="page-hero-content">
+    <div class="breadcrumb"><a href="../index.html">الرئيسية</a><span>/</span><span>المدونة</span></div>
+    <h1>مدونة <span class="gold">بذخ</span></h1>
+    <p>أفكار، إلهام، وأحدث ترندات التصميم الفاخر</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="blog-full-grid">
+    <div class="blog-main-list">
+      <div class="blog-main-card reveal">
+        <div class="blog-main-thumb p-bg-1"><div style="opacity:0.2;font-size:4rem;">🏠</div><span class="blog-cat" style="position:absolute;top:1rem;right:1rem;">تصميم داخلي</span></div>
+        <div class="blog-main-body">
+          <div class="blog-date">١٥ مايو ٢٠٢٥</div>
+          <h3 class="blog-title">ترندات التصميم الداخلي لعام 2025: ما الذي يجب أن تعرفه؟</h3>
+          <p class="blog-excerpt">يشهد عام 2025 ثورة في عالم التصميم الداخلي، من المواد الطبيعية الفاخرة إلى الألوان الترابية الدافئة والتكنولوجيا الذكية المدمجة في الديكور.</p>
+          <a href="#" class="blog-link">اقرأ المقال كاملاً ←</a>
+        </div>
+      </div>
+      <div class="blog-main-card reveal">
+        <div class="blog-main-thumb p-bg-2"><div style="opacity:0.2;font-size:4rem;">💡</div><span class="blog-cat" style="position:absolute;top:1rem;right:1rem;">إضاءة</span></div>
+        <div class="blog-main-body">
+          <div class="blog-date">٢ مايو ٢٠٢٥</div>
+          <h3 class="blog-title">سحر الإضاءة: كيف تحوّل أي غرفة عادية إلى تحفة فنية؟</h3>
+          <p class="blog-excerpt">الإضاءة الصحيحة قادرة على تغيير روح المكان بالكامل. تعرّف على أسرار توظيف الإضاءة في التصاميم الفاخرة وكيف يُفكر مصممو الإضاءة المحترفون.</p>
+          <a href="#" class="blog-link">اقرأ المقال كاملاً ←</a>
+        </div>
+      </div>
+      <div class="blog-main-card reveal">
+        <div class="blog-main-thumb p-bg-5"><div style="opacity:0.2;font-size:4rem;">🛋️</div><span class="blog-cat" style="position:absolute;top:1rem;right:1rem;">أثاث فاخر</span></div>
+        <div class="blog-main-body">
+          <div class="blog-date">١٨ أبريل ٢٠٢٥</div>
+          <h3 class="blog-title">دليل اختيار الأثاث الفاخر: ما يدوم وما يُبهر</h3>
+          <p class="blog-excerpt">من الجلد الإيطالي إلى الخشب المصمت الصلب، نقدم لك دليلاً شاملاً لاختيار قطع الأثاث التي تجمع بين الجمال الأبدي والمتانة العالية.</p>
+          <a href="#" class="blog-link">اقرأ المقال كاملاً ←</a>
+        </div>
+      </div>
+      <div class="blog-main-card reveal">
+        <div class="blog-main-thumb p-bg-3"><div style="opacity:0.2;font-size:4rem;">🎨</div><span class="blog-cat" style="position:absolute;top:1rem;right:1rem;">ألوان</span></div>
+        <div class="blog-main-body">
+          <div class="blog-date">5 أبريل ٢٠٢٥</div>
+          <h3 class="blog-title">علم الألوان في التصميم الداخلي الفاخر</h3>
+          <p class="blog-excerpt">الألوان ليست مجرد جماليات — إنها علم نفسي وفلسفة بصرية. اكتشف كيف يختار المصممون المحترفون لوح الألوان المثالي لكل فضاء.</p>
+          <a href="#" class="blog-link">اقرأ المقال كاملاً ←</a>
+        </div>
+      </div>
+      <div class="blog-main-card reveal">
+        <div class="blog-main-thumb p-bg-4"><div style="opacity:0.2;font-size:4rem;">🏗️</div><span class="blog-cat" style="position:absolute;top:1rem;right:1rem;">تصميم خارجي</span></div>
+        <div class="blog-main-body">
+          <div class="blog-date">٢٠ مارس ٢٠٢٥</div>
+          <h3 class="blog-title">تصميم الفضاءات الخارجية: امتداد لهويتك</h3>
+          <p class="blog-excerpt">الحديقة والواجهة والمداخل — هذه ليست مجرد ملاحق للمنزل، بل هي أول ما يحكي عنك قبل أن يدخل أي زائر. تعرف على أسرار التصميم الخارجي الفاخر.</p>
+          <a href="#" class="blog-link">اقرأ المقال كاملاً ←</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="sidebar-card reveal">
+        <div class="sidebar-title">ابحث في المدونة</div>
+        <div style="display:flex;gap:0;border:1px solid var(--border);">
+          <input type="text" placeholder="ابحث عن مقال..." style="flex:1;padding:0.8rem 1rem;border:none;background:var(--dark);color:var(--white);font-size:0.85rem;font-family:var(--font-ar);outline:none;">
+          <button style="padding:0.8rem 1.2rem;background:var(--gold);border:none;cursor:pointer;color:var(--dark);font-weight:700;">🔍</button>
+        </div>
+      </div>
+
+      <div class="sidebar-card reveal">
+        <div class="sidebar-title">أحدث المقالات</div>
+        <div class="recent-post">
+          <div class="recent-thumb p-bg-1">🏠</div>
+          <div class="recent-info"><h4>ترندات التصميم الداخلي 2025</h4><span>١٥ مايو ٢٠٢٥</span></div>
+        </div>
+        <div class="recent-post">
+          <div class="recent-thumb p-bg-2">💡</div>
+          <div class="recent-info"><h4>سحر الإضاءة في التصميم</h4><span>٢ مايو ٢٠٢٥</span></div>
+        </div>
+        <div class="recent-post">
+          <div class="recent-thumb p-bg-5">🛋️</div>
+          <div class="recent-info"><h4>دليل اختيار الأثاث الفاخر</h4><span>١٨ أبريل ٢٠٢٥</span></div>
+        </div>
+        <div class="recent-post">
+          <div class="recent-thumb p-bg-3">🎨</div>
+          <div class="recent-info"><h4>علم الألوان في التصميم</h4><span>٥ أبريل ٢٠٢٥</span></div>
+        </div>
+      </div>
+
+      <div class="sidebar-card reveal">
+        <div class="sidebar-title">الوسوم</div>
+        <div class="tag-cloud">
+          <span class="tag">تصميم داخلي</span><span class="tag">فاخر</span><span class="tag">إضاءة</span>
+          <span class="tag">أثاث</span><span class="tag">ألوان</span><span class="tag">تصميم خارجي</span>
+          <span class="tag">ديكور</span><span class="tag">مطبخ</span><span class="tag">غرفة نوم</span>
+          <span class="tag">منتجع</span><span class="tag">فلل</span><span class="tag">مكاتب</span>
+        </div>
+      </div>
+
+      <div class="sidebar-card reveal" style="background:var(--gold);border-color:var(--gold);">
+        <div style="font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--dark);margin-bottom:1rem;font-weight:700;">النشرة البريدية</div>
+        <p style="font-size:0.82rem;color:var(--dark-2);margin-bottom:1.2rem;line-height:1.6;">اشترك واحصل على أحدث ترندات التصميم مباشرة في بريدك.</p>
+        <input type="email" placeholder="بريدك الإلكتروني" style="width:100%;padding:0.8rem;border:none;margin-bottom:0.8rem;font-family:var(--font-ar);font-size:0.85rem;">
+        <button onclick="submitForm()" style="width:100%;padding:0.8rem;background:var(--dark);color:var(--gold);border:none;cursor:pointer;font-weight:700;font-size:0.82rem;font-family:var(--font-ar);letter-spacing:0.05em;">اشتراك ✦</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-main">
+    <div class="footer-brand"><a href="../index.html" class="nav-logo" style="display:inline-block;margin-bottom:1.2rem;">BADHAKH<span>فن التصميم الفاخر</span></a><p>نؤمن بأن كل فضاء يستحق أن يكون تحفة فنية.</p></div>
+    <div class="footer-col"><h4>الشركة</h4><a href="about.html">من نحن</a><a href="portfolio.html">أعمالنا</a><a href="blog.html">المدونة</a></div>
+    <div class="footer-col"><h4>الخدمات</h4><a href="services.html">التصميم الداخلي</a><a href="services.html">التصميم الخارجي</a></div>
+    <div class="footer-col"><h4>تواصل</h4><a href="tel:+966500000000">+966 50 000 0000</a><a href="mailto:info@badhakh.com">info@badhakh.com</a></div>
+  </div>
+  <div class="footer-bottom"><span>© 2025 BADHAKH — جميع الحقوق محفوظة</span></div>
+</footer>
+
+<div class="modal-overlay" id="serviceModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-title">طلب خدمة</div><p class="modal-sub">أرسل لنا تفاصيل مشروعك.</p>
+    <div class="form-group"><label>الاسم الكامل *</label><input type="text" placeholder="أدخل اسمك الكامل"></div>
+    <div class="form-row">
+      <div class="form-group"><label>البريد الإلكتروني</label><input type="email" placeholder="example@email.com"></div>
+      <div class="form-group"><label>رقم الجوال</label><input type="tel" placeholder="+966 5X XXX XXXX"></div>
+    </div>
+    <div class="form-group"><label>تفاصيل المشروع</label><textarea rows="4" placeholder="صف مشروعك..."></textarea></div>
+    <button class="form-submit" onclick="submitForm()">إرسال الطلب ✦</button>
+  </div>
+</div>
+<script src="../js/main.js"></script>
+</body>
+</html>

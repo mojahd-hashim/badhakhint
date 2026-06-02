@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>من نحن — بذخ BADHAKH</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .team-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:2rem; margin-top:5rem; }
+    .team-card { text-align:center; }
+    .team-avatar { width:100%; aspect-ratio:3/4; background:linear-gradient(135deg,#1a1208,#2d2010); display:flex; align-items:center; justify-content:center; font-size:5rem; opacity:0.3; margin-bottom:1.5rem; position:relative; overflow:hidden; }
+    .team-avatar::after { content:''; position:absolute; inset:0; border:1px solid var(--border); }
+    .team-name { font-family:var(--font-en); font-size:1.1rem; font-weight:600; color:var(--white); margin-bottom:0.3rem; }
+    .team-role { font-size:0.75rem; color:var(--gold); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.8rem; }
+    .team-bio { font-size:0.8rem; color:var(--gray); line-height:1.7; }
+    .value-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; margin-top:4rem; }
+    .value-card { border:1px solid var(--border); padding:2.5rem 2rem; text-align:center; transition:var(--transition); }
+    .value-card:hover { border-color:var(--gold); background:var(--dark-2); }
+    .value-icon { font-size:2.5rem; margin-bottom:1.2rem; }
+    .value-title { font-family:var(--font-en); font-size:1rem; color:var(--gold); margin-bottom:0.8rem; font-weight:600; }
+    .value-desc { font-size:0.82rem; color:var(--gray); line-height:1.8; }
+    @media(max-width:1100px){ .team-grid{grid-template-columns:repeat(2,1fr);} }
+    @media(max-width:700px){ .team-grid{grid-template-columns:1fr 1fr;} .value-grid{grid-template-columns:1fr;} }
+    @media(max-width:500px){ .team-grid{grid-template-columns:1fr;} }
+  </style>
+</head>
+<body>
+<div id="loader"><div class="loader-content"><div class="loader-logo">BADHAKH</div><div class="loader-bar"></div></div></div>
+<div class="custom-cursor" id="cursor"></div><div class="cursor-follower" id="cursor-follower"></div>
+<div class="toast" id="toast">✓ تم إرسال طلبك</div>
+
+<nav id="navbar">
+  <a href="../index.html" class="nav-logo">BADHAKH<span>فن التصميم الفاخر</span></a>
+  <ul class="nav-links">
+    <li><a href="../index.html">الرئيسية</a></li><li><a href="services.html">الخدمات</a></li>
+    <li><a href="portfolio.html">أعمالنا</a></li><li><a href="about.html" class="active">من نحن</a></li>
+    <li><a href="blog.html">المدونة</a></li><li><a href="partners.html">شركاؤنا</a></li>
+    <li><a href="contact.html">تواصل</a></li><li><a href="#" class="nav-cta" onclick="openModal()">طلب خدمة</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="../index.html" onclick="toggleMenu()">الرئيسية</a><a href="services.html" onclick="toggleMenu()">الخدمات</a>
+  <a href="portfolio.html" onclick="toggleMenu()">أعمالنا</a><a href="about.html" onclick="toggleMenu()">من نحن</a>
+  <a href="blog.html" onclick="toggleMenu()">المدونة</a><a href="partners.html" onclick="toggleMenu()">شركاؤنا</a>
+  <a href="contact.html" onclick="toggleMenu()">تواصل</a>
+  <a href="#" onclick="openModal();toggleMenu();" style="color:var(--gold);border:1px solid var(--gold);padding:0.8rem 2.5rem;">طلب خدمة</a>
+</div>
+
+<div class="page-hero" style="padding-top:85px;">
+  <div class="deco-text">About</div>
+  <div class="page-hero-content">
+    <div class="breadcrumb"><a href="../index.html">الرئيسية</a><span>/</span><span>من نحن</span></div>
+    <h1>قصة <span class="gold">بذخ</span></h1>
+    <p>12 عاماً من الإبداع والتميز في عالم التصميم</p>
+  </div>
+</div>
+
+<!-- Story -->
+<section class="section about-section">
+  <div class="about-layout">
+    <div class="about-visual reveal">
+      <div class="about-frame"></div>
+      <div class="about-img-main">
+        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:8rem;opacity:0.12;">✦</div>
+      </div>
+      <div class="about-img-accent">
+        <div class="about-accent-text">
+          <span class="num">2012</span>
+          <span class="label">تأسست<br>بذخ</span>
+        </div>
+      </div>
+    </div>
+    <div class="about-content reveal">
+      <div class="section-label"><span>قصتنا</span></div>
+      <h2 class="section-heading" style="color:var(--dark);">من <span class="gold">الحلم</span> إلى الواقع</h2>
+      <div class="gold-divider"></div>
+      <p class="section-sub" style="color:#555;">بدأت بذخ عام 2012 برؤية بسيطة لكنها عميقة: أن التصميم الفاخر ليس ترفاً — بل ضرورة لكل من يريد أن يعيش ويعمل في بيئة تُلهم وتُحفّز.</p>
+      <p class="section-sub" style="color:#555;margin-top:1rem;">اليوم، بعد 12 عاماً وأكثر من 350 مشروعاً حول المملكة والعالم، لا تزال هذه الرؤية تقودنا في كل مشروع نتولاه، مهما صغر أو كبر.</p>
+      <p class="section-sub" style="color:#555;margin-top:1rem;">فريقنا من المصممين الموهوبين والمنفذين المحترفين يضع قلبه في كل مشروع، ليُسلّمك نتيجة تتجاوز كل ما تتخيله.</p>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem;">
+        <div style="text-align:center;padding:1.5rem 1rem;border:1px solid var(--gold);">
+          <div style="font-family:var(--font-en);font-size:2rem;font-weight:700;color:var(--gold);" data-count="350">0</div>
+          <div style="font-size:0.7rem;color:#666;letter-spacing:0.1em;text-transform:uppercase;margin-top:0.3rem;">مشروع</div>
+        </div>
+        <div style="text-align:center;padding:1.5rem 1rem;border:1px solid var(--gold);">
+          <div style="font-family:var(--font-en);font-size:2rem;font-weight:700;color:var(--gold);" data-count="12">0</div>
+          <div style="font-size:0.7rem;color:#666;letter-spacing:0.1em;text-transform:uppercase;margin-top:0.3rem;">سنة</div>
+        </div>
+        <div style="text-align:center;padding:1.5rem 1rem;border:1px solid var(--gold);">
+          <div style="font-family:var(--font-en);font-size:2rem;font-weight:700;color:var(--gold);" data-count="8">0</div>
+          <div style="font-size:0.7rem;color:#666;letter-spacing:0.1em;text-transform:uppercase;margin-top:0.3rem;">جوائز</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Values -->
+<section class="section" style="background:var(--dark);">
+  <div class="section-header-centered reveal">
+    <div class="section-label"><span>قيمنا</span></div>
+    <h2 class="section-heading">ما يجعلنا <span class="gold">مختلفين</span></h2>
+    <div class="gold-divider gold-divider-center"></div>
+  </div>
+  <div class="value-grid">
+    <div class="value-card reveal reveal-delay-1">
+      <div class="value-icon">✦</div>
+      <div class="value-title">التميز في التفاصيل</div>
+      <p class="value-desc">نؤمن أن الفخامة الحقيقية تكمن في التفاصيل الصغيرة. كل خياطة، كل زاوية، كل نسيج — لا شيء يُغفَل.</p>
+    </div>
+    <div class="value-card reveal reveal-delay-2">
+      <div class="value-icon">🤝</div>
+      <div class="value-title">الشراكة الحقيقية</div>
+      <p class="value-desc">لسنا مجرد مصممين — نحن شركاء في رحلتك. نستمع ونفهم ونترجم أحلامك إلى واقع ملموس وجميل.</p>
+    </div>
+    <div class="value-card reveal reveal-delay-3">
+      <div class="value-icon">🌿</div>
+      <div class="value-title">الاستدامة والمسؤولية</div>
+      <p class="value-desc">نختار مواد صديقة للبيئة ونعمل بأساليب مستدامة دون التنازل عن أعلى معايير الجودة والجماليات.</p>
+    </div>
+    <div class="value-card reveal reveal-delay-1">
+      <div class="value-icon">🎨</div>
+      <div class="value-title">الإبداع بلا حدود</div>
+      <p class="value-desc">نرفض القوالب الجاهزة. كل مشروع يُصمَّم من الصفر ليكون تعبيراً حقيقياً وفريداً عن روح صاحبه.</p>
+    </div>
+    <div class="value-card reveal reveal-delay-2">
+      <div class="value-icon">⏱️</div>
+      <div class="value-title">الالتزام بالمواعيد</div>
+      <p class="value-desc">وقتك ثمين. نلتزم بالجداول الزمنية بدقة مع ضمان الجودة في كل مرحلة من مراحل التنفيذ.</p>
+    </div>
+    <div class="value-card reveal reveal-delay-3">
+      <div class="value-icon">🏆</div>
+      <div class="value-title">التفوق الدائم</div>
+      <p class="value-desc">لا نقبل بالمتوسط. معاييرنا عالية لأن عملاءنا يستحقون الأفضل دائماً وفي كل شيء.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Team -->
+<section class="section" style="background:var(--dark-2);">
+  <div class="section-header-centered reveal">
+    <div class="section-label"><span>فريقنا</span></div>
+    <h2 class="section-heading">العقول <span class="gold">المبدعة</span></h2>
+    <div class="gold-divider gold-divider-center"></div>
+    <p class="section-sub" style="margin:0 auto;color:var(--gray);">فريق من المصممين الموهوبين والمتخصصين ذوي الخبرة العالمية.</p>
+  </div>
+  <div class="team-grid">
+    <div class="team-card reveal reveal-delay-1">
+      <div class="team-avatar">👤</div>
+      <div class="team-name">Khalid Al-Rashid</div>
+      <div class="team-role">المؤسس والمدير الإبداعي</div>
+      <p class="team-bio">خريج جامعة لندن للفنون. أكثر من 20 عاماً في التصميم الداخلي الفاخر حول العالم.</p>
+    </div>
+    <div class="team-card reveal reveal-delay-2">
+      <div class="team-avatar">👤</div>
+      <div class="team-name">Lina Al-Saud</div>
+      <div class="team-role">كبيرة مصممات التصميم الداخلي</div>
+      <p class="team-bio">متخصصة في التصميم المعاصر الفاخر. جوائز دولية في التصميم الداخلي من إيطاليا وفرنسا.</p>
+    </div>
+    <div class="team-card reveal reveal-delay-3">
+      <div class="team-avatar">👤</div>
+      <div class="team-name">Omar Nasser</div>
+      <div class="team-role">مهندس معماري أول</div>
+      <p class="team-bio">خبرة 15 عاماً في التصميم المعماري والخارجي للمباني الفاخرة والمجمعات السكنية.</p>
+    </div>
+    <div class="team-card reveal reveal-delay-4">
+      <div class="team-avatar">👤</div>
+      <div class="team-name">Nora Khalid</div>
+      <div class="team-role">مصممة الإضاءة والأجواء</div>
+      <p class="team-bio">متخصصة في تصميم الإضاءة الاحترافية وخلق الأجواء الفريدة التي تُحوّل أي فضاء إلى تجربة.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Awards -->
+<section class="section" style="background:var(--gold);padding:80px 5%;">
+  <div class="section-header-centered reveal">
+    <div class="section-label" style="color:var(--dark-2);"><span style="color:var(--dark);">جوائزنا</span></div>
+    <h2 class="section-heading" style="color:var(--dark);">تكريم <span style="color:var(--dark-2);">التميز</span></h2>
+    <div class="gold-divider gold-divider-center" style="background:var(--dark);"></div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-top:3rem;" class="reveal">
+    <div style="text-align:center;padding:2rem;background:rgba(0,0,0,0.1);">
+      <div style="font-size:2rem;margin-bottom:0.8rem;">🏆</div>
+      <div style="font-weight:700;color:var(--dark);font-size:0.9rem;margin-bottom:0.4rem;">Best Luxury Interior 2023</div>
+      <div style="font-size:0.75rem;color:var(--dark-2);opacity:0.75;">Middle East Design Awards</div>
+    </div>
+    <div style="text-align:center;padding:2rem;background:rgba(0,0,0,0.1);">
+      <div style="font-size:2rem;margin-bottom:0.8rem;">🥇</div>
+      <div style="font-weight:700;color:var(--dark);font-size:0.9rem;margin-bottom:0.4rem;">Excellence in Design 2022</div>
+      <div style="font-size:0.75rem;color:var(--dark-2);opacity:0.75;">Saudi Architecture Forum</div>
+    </div>
+    <div style="text-align:center;padding:2rem;background:rgba(0,0,0,0.1);">
+      <div style="font-size:2rem;margin-bottom:0.8rem;">⭐</div>
+      <div style="font-weight:700;color:var(--dark);font-size:0.9rem;margin-bottom:0.4rem;">Top 10 Firms 2021</div>
+      <div style="font-size:0.75rem;color:var(--dark-2);opacity:0.75;">Arabian Business Magazine</div>
+    </div>
+    <div style="text-align:center;padding:2rem;background:rgba(0,0,0,0.1);">
+      <div style="font-size:2rem;margin-bottom:0.8rem;">🎖️</div>
+      <div style="font-weight:700;color:var(--dark);font-size:0.9rem;margin-bottom:0.4rem;">Innovation Award 2020</div>
+      <div style="font-size:0.75rem;color:var(--dark-2);opacity:0.75;">Global Design Institute</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-main">
+    <div class="footer-brand"><a href="../index.html" class="nav-logo" style="display:inline-block;margin-bottom:1.2rem;">BADHAKH<span>فن التصميم الفاخر</span></a><p>نؤمن بأن كل فضاء يستحق أن يكون تحفة فنية.</p></div>
+    <div class="footer-col"><h4>الشركة</h4><a href="about.html">من نحن</a><a href="portfolio.html">أعمالنا</a><a href="blog.html">المدونة</a></div>
+    <div class="footer-col"><h4>الخدمات</h4><a href="services.html">التصميم الداخلي</a><a href="services.html">التصميم الخارجي</a><a href="services.html">الأثاث والديكور</a></div>
+    <div class="footer-col"><h4>تواصل</h4><a href="tel:+966500000000">+966 50 000 0000</a><a href="mailto:info@badhakh.com">info@badhakh.com</a></div>
+  </div>
+  <div class="footer-bottom"><span>© 2025 BADHAKH — جميع الحقوق محفوظة</span></div>
+</footer>
+
+<div class="modal-overlay" id="serviceModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-title">طلب خدمة</div><p class="modal-sub">أرسل لنا تفاصيل مشروعك.</p>
+    <div class="form-group"><label>الاسم الكامل *</label><input type="text" placeholder="أدخل اسمك الكامل"></div>
+    <div class="form-row">
+      <div class="form-group"><label>البريد الإلكتروني</label><input type="email" placeholder="example@email.com"></div>
+      <div class="form-group"><label>رقم الجوال</label><input type="tel" placeholder="+966 5X XXX XXXX"></div>
+    </div>
+    <div class="form-group"><label>تفاصيل المشروع</label><textarea rows="4" placeholder="صف مشروعك..."></textarea></div>
+    <button class="form-submit" onclick="submitForm()">إرسال الطلب ✦</button>
+  </div>
+</div>
+<script src="../js/main.js"></script>
+</body>
+</html>

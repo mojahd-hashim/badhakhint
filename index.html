@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>بذخ — BADHAKH Luxury Interiors</title>
+  <meta name="description" content="بذخ — شركة متخصصة في التصميم الداخلي والخارجي الفاخر. نصمم، نشرف، ونسوّق مشروعك من الفكرة حتى الظهور.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Loader -->
+<div id="loader">
+  <div class="loader-content">
+    <div class="loader-logo">BADHAKH</div>
+    <div style="font-family:'Cairo',sans-serif;font-size:0.7rem;letter-spacing:0.3em;color:var(--gold-light);margin-top:0.5rem;text-align:center;">بذخ — فن التصميم الفاخر</div>
+    <div class="loader-bar"></div>
+  </div>
+</div>
+
+<!-- Custom Cursor -->
+<div class="custom-cursor" id="cursor"></div>
+<div class="cursor-follower" id="cursor-follower"></div>
+
+<!-- Toast -->
+<div class="toast" id="toast">✓ تم إرسال رسالتك بنجاح</div>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">
+    BADHAKH
+    <span>فن التصميم الفاخر</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">الرئيسية</a></li>
+    <li><a href="pages/services.html">الخدمات</a></li>
+    <li><a href="pages/portfolio.html">أعمالنا</a></li>
+    <li><a href="pages/about.html">من نحن</a></li>
+    <li><a href="pages/blog.html">المدونة</a></li>
+    <li><a href="pages/partners.html">شركاؤنا</a></li>
+    <li><a href="pages/contact.html">تواصل</a></li>
+    <li><a href="#" class="nav-cta" onclick="openModal()">طلب خدمة</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html" onclick="toggleMenu()">الرئيسية</a>
+  <a href="pages/services.html" onclick="toggleMenu()">الخدمات</a>
+  <a href="pages/portfolio.html" onclick="toggleMenu()">أعمالنا</a>
+  <a href="pages/about.html" onclick="toggleMenu()">من نحن</a>
+  <a href="pages/blog.html" onclick="toggleMenu()">المدونة</a>
+  <a href="pages/partners.html" onclick="toggleMenu()">شركاؤنا</a>
+  <a href="pages/contact.html" onclick="toggleMenu()">تواصل</a>
+  <a href="#" onclick="openModal();toggleMenu();" style="color:var(--gold);border:1px solid var(--gold);padding:0.8rem 2.5rem;">طلب خدمة</a>
+</div>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+
+  <!-- Animated geometric shapes -->
+  <div style="position:absolute;top:15%;right:5%;width:300px;height:300px;border:1px solid rgba(201,169,110,0.08);transform:rotate(45deg);pointer-events:none;"></div>
+  <div style="position:absolute;bottom:15%;left:5%;width:200px;height:200px;border:1px solid rgba(201,169,110,0.06);transform:rotate(30deg);pointer-events:none;"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge">التصميم الداخلي والخارجي الفاخر</div>
+
+    <h1 class="hero-title">
+      <span class="gold">BADHAKH</span>
+    </h1>
+    <div class="hero-subtitle-ar">حيث يلتقي الفن بالفخامة</div>
+
+    <p class="hero-desc">
+      نصمّم فضاءات تحكي قصتك. من المفهوم الأول إلى اللمسة الأخيرة، نرافقك في كل خطوة نحو مساحة تعكس هويتك وذوقك الرفيع.
+    </p>
+
+    <div class="hero-actions">
+      <a href="pages/portfolio.html" class="btn-primary">اكتشف أعمالنا</a>
+      <a href="#" class="btn-outline" onclick="openModal()">طلب استشارة مجانية</a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-num" data-count="350">0</span>
+        <div class="stat-label">مشروع منجز</div>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num" data-count="12">0</span>
+        <div class="stat-label">سنة خبرة</div>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num" data-count="98">0</span>
+        <div class="stat-label">% رضا العملاء</div>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num" data-count="8">0</span>
+        <div class="stat-label">جوائز دولية</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <div class="scroll-mouse"></div>
+    <div class="scroll-text">Scroll</div>
+  </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section class="section" id="services">
+  <div class="section-header-centered reveal">
+    <div class="section-label"><span>خدماتنا</span></div>
+    <h2 class="section-heading">نقدّم <span class="gold">الفخامة</span> في كل تفصيل</h2>
+    <div class="gold-divider gold-divider-center"></div>
+    <p class="section-sub" style="margin:0 auto;">من التصميم الداخلي إلى الخارجي، نقدّم حلولاً متكاملة تجمع بين الجمال والوظيفة.</p>
+  </div>
+
+  <div class="services-grid">
+    <div class="service-card reveal reveal-delay-1">
+      <div class="service-num">01</div>
+      <span class="service-icon">🏛️</span>
+      <div class="service-title">Interior Design</div>
+      <div class="service-title-ar">التصميم الداخلي</div>
+      <p class="service-desc">نخلق فضاءات داخلية تجمع بين الجمال والوظيفة، مع الاهتمام بكل تفصيل لضمان تجربة معيشية فريدة.</p>
+      <a href="pages/services.html" class="service-link">اعرف المزيد ←</a>
+    </div>
+    <div class="service-card reveal reveal-delay-2">
+      <div class="service-num">02</div>
+      <span class="service-icon">🏗️</span>
+      <div class="service-title">Exterior Design</div>
+      <div class="service-title-ar">التصميم الخارجي</div>
+      <p class="service-desc">نصمم واجهات وفضاءات خارجية تعكس هوية مشروعك وتترك انطباعاً لا يُنسى لدى كل زائر.</p>
+      <a href="pages/services.html" class="service-link">اعرف المزيد ←</a>
+    </div>
+    <div class="service-card reveal reveal-delay-3">
+      <div class="service-num">03</div>
+      <span class="service-icon">🛋️</span>
+      <div class="service-title">Furniture & Decor</div>
+      <div class="service-title-ar">الأثاث والديكور</div>
+      <p class="service-desc">نختار ونوفر قطع أثاث وإكسسوارات حصرية تتناسب مع التصميم وتضيف لمسة فاخرة لكل زاوية.</p>
+      <a href="pages/services.html" class="service-link">اعرف المزيد ←</a>
+    </div>
+    <div class="service-card reveal reveal-delay-1">
+      <div class="service-num">04</div>
+      <span class="service-icon">💡</span>
+      <div class="service-title">Lighting Design</div>
+      <div class="service-title-ar">تصميم الإضاءة</div>
+      <p class="service-desc">الإضاءة روح المكان. نصمم أنظمة إضاءة ذكية تُبرز جمال الفضاء وتخلق أجواءً استثنائية.</p>
+      <a href="pages/services.html" class="service-link">اعرف المزيد ←</a>
+    </div>
+    <div class="service-card reveal reveal-delay-2">
+      <div class="service-num">05</div>
+      <span class="service-icon">📐</span>
+      <div class="service-title">Space Planning</div>
+      <div class="service-title-ar">تخطيط الفضاء</div>
+      <p class="service-desc">ندرس ونُحسّن استخدام كل متر مربع لضمان تدفق طبيعي وتوازن مثالي في توزيع المساحات.</p>
+      <a href="pages/services.html" class="service-link">اعرف المزيد ←</a>
+    </div>
+    <div class="service-card reveal reveal-delay-3">
+      <div class="service-num">06</div>
+      <span class="service-icon">📊</span>
+      <div class="service-title">Project Management</div>
+      <div class="service-title-ar">إدارة المشاريع</div>
+      <p class="service-desc">نشرف على تنفيذ المشروع من البداية حتى التسليم، مع ضمان الجودة والالتزام بالجداول الزمنية.</p>
+      <a href="pages/services.html" class="service-link">اعرف المزيد ←</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PORTFOLIO PREVIEW ===== -->
+<section class="section portfolio-section" id="portfolio">
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:4rem;" class="reveal">
+    <div>
+      <div class="section-label"><span>معرض الأعمال</span></div>
+      <h2 class="section-heading">أعمال <span class="gold">تتحدث</span> عن نفسها</h2>
+      <div class="gold-divider"></div>
+    </div>
+    <a href="pages/portfolio.html" class="btn-outline" style="flex-shrink:0;">عرض كل الأعمال →</a>
+  </div>
+
+  <div class="portfolio-filter reveal">
+    <button class="filter-btn active" onclick="filterPortfolio(this,'all')">الكل</button>
+    <button class="filter-btn" onclick="filterPortfolio(this,'residential')">سكني</button>
+    <button class="filter-btn" onclick="filterPortfolio(this,'commercial')">تجاري</button>
+    <button class="filter-btn" onclick="filterPortfolio(this,'hospitality')">ضيافة</button>
+    <button class="filter-btn" onclick="filterPortfolio(this,'exterior')">خارجي</button>
+  </div>
+
+  <div class="portfolio-grid reveal">
+    <div class="portfolio-item p-bg-1" data-cat="residential">
+      <div class="interior-visual">🏠</div>
+      <div class="portfolio-overlay">
+        <div class="portfolio-info">
+          <h3>فيلا الياسمين</h3>
+          <p>سكني · الرياض</p>
+        </div>
+      </div>
+    </div>
+    <div class="portfolio-item p-bg-2" data-cat="commercial">
+      <div class="interior-visual">🏢</div>
+      <div class="portfolio-overlay">
+        <div class="portfolio-info">
+          <h3>مقر شركة النخبة</h3>
+          <p>تجاري · جدة</p>
+        </div>
+      </div>
+    </div>
+    <div class="portfolio-item p-bg-3" data-cat="hospitality">
+      <div class="interior-visual">🏨</div>
+      <div class="portfolio-overlay">
+        <div class="portfolio-info">
+          <h3>لاونج بذخ</h3>
+          <p>ضيافة · الدمام</p>
+        </div>
+      </div>
+    </div>
+    <div class="portfolio-item p-bg-4" data-cat="exterior">
+      <div class="interior-visual">🌿</div>
+      <div class="portfolio-overlay">
+        <div class="portfolio-info">
+          <h3>حديقة القصر</h3>
+          <p>خارجي · الرياض</p>
+        </div>
+      </div>
+    </div>
+    <div class="portfolio-item p-bg-5" data-cat="residential">
+      <div class="interior-visual">🛏️</div>
+      <div class="portfolio-overlay">
+        <div class="portfolio-info">
+          <h3>جناح الملكي</h3>
+          <p>سكني · جدة</p>
+        </div>
+      </div>
+    </div>
+    <div class="portfolio-item p-bg-6" data-cat="commercial">
+      <div class="interior-visual">☕</div>
+      <div class="portfolio-overlay">
+        <div class="portfolio-info">
+          <h3>كافيه الفن</h3>
+          <p>تجاري · أبها</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT PREVIEW ===== -->
+<section class="section about-section" id="about">
+  <div class="about-layout">
+    <div class="about-visual reveal">
+      <div class="about-frame"></div>
+      <div class="about-img-main" style="background:linear-gradient(135deg,#1a1208 0%,#2d2010 40%,#3d2e18 100%);">
+        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:8rem;opacity:0.12;">🏛️</div>
+      </div>
+      <div class="about-img-accent">
+        <div class="about-accent-text">
+          <span class="num">12+</span>
+          <span class="label">عاماً من<br>التميز</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-content reveal">
+      <div class="section-label"><span>من نحن</span></div>
+      <h2 class="section-heading" style="color:var(--dark);">نحن نصنع <span class="gold">تجارب</span><br>لا مجرد فضاءات</h2>
+      <div class="gold-divider"></div>
+      <p class="section-sub" style="color:#555;">
+        بذخ ليست مجرد شركة تصميم — هي فلسفة. نؤمن بأن المساحة الجميلة تُغيّر الأمزجة وترفع الإنتاجية وتحكي قصة صاحبها بصدق.
+      </p>
+      <p class="section-sub" style="color:#555;margin-top:1rem;">
+        فريقنا من المصممين المعماريين والداخليين المتخصصين يعمل معك خطوة بخطوة، من الفكرة الأولى حتى اللمسة الأخيرة.
+      </p>
+
+      <div class="about-features">
+        <div class="about-feature">
+          <div class="feature-icon">✦</div>
+          <div class="feature-text">
+            <h4>تصميم مخصص بالكامل</h4>
+            <p>كل مشروع يُصمَّم من الصفر وفق هوية العميل ورؤيته الخاصة.</p>
+          </div>
+        </div>
+        <div class="about-feature">
+          <div class="feature-icon">✦</div>
+          <div class="feature-text">
+            <h4>إشراف كامل على التنفيذ</h4>
+            <p>نرافقك من الرسم التخطيطي حتى التسليم النهائي بضمان الجودة.</p>
+          </div>
+        </div>
+        <div class="about-feature">
+          <div class="feature-icon">✦</div>
+          <div class="feature-text">
+            <h4>مواد فاخرة مختارة</h4>
+            <p>نستخدم أجود المواد المحلية والمستوردة بما يناسب كل مشروع.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:2.5rem;">
+        <a href="pages/about.html" class="btn-primary">تعرّف علينا أكثر</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROCESS ===== -->
+<section class="section process-section">
+  <div class="section-header-centered reveal">
+    <div class="section-label"><span>منهجيتنا</span></div>
+    <h2 class="section-heading">كيف <span class="gold">نعمل</span></h2>
+    <div class="gold-divider gold-divider-center"></div>
+    <p class="section-sub" style="margin:0 auto;">أربع خطوات واضحة تضمن مشروعاً يتجاوز توقعاتك.</p>
+  </div>
+
+  <div class="process-steps">
+    <div class="process-step reveal reveal-delay-1">
+      <div class="step-num">01</div>
+      <div class="step-title">الاستشارة والرؤية</div>
+      <p class="step-desc">نبدأ بفهم احتياجاتك وأسلوب حياتك وتطلعاتك لتحديد الرؤية الصحيحة للمشروع.</p>
+    </div>
+    <div class="process-step reveal reveal-delay-2">
+      <div class="step-num">02</div>
+      <div class="step-title">التصميم والتخطيط</div>
+      <p class="step-desc">نضع مخططات تفصيلية وصور ثلاثية الأبعاد توضح شكل المشروع النهائي بدقة.</p>
+    </div>
+    <div class="process-step reveal reveal-delay-3">
+      <div class="step-num">03</div>
+      <div class="step-title">التنفيذ والإشراف</div>
+      <p class="step-desc">ينفذ فريقنا المتخصص المشروع مع إشراف يومي دقيق على الجودة والمواعيد.</p>
+    </div>
+    <div class="process-step reveal reveal-delay-4">
+      <div class="step-num">04</div>
+      <div class="step-title">التسليم والدعم</div>
+      <p class="step-desc">نسلّمك مشروعك كاملاً مع ضمان ودعم مستمر لضمان رضاك التام.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="section testimonials-section">
+  <div class="section-header-centered reveal">
+    <div class="section-label"><span>آراء عملائنا</span></div>
+    <h2 class="section-heading" style="color:var(--dark);">يقولون عن <span class="gold">بذخ</span></h2>
+    <div class="gold-divider gold-divider-center"></div>
+  </div>
+
+  <div class="testimonials-track reveal">
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-quote">"</div>
+      <p class="testimonial-text">تجربة لا تُوصف. الفريق فهم رؤيتي من اليوم الأول ونفّذها بإتقان فاق كل توقعاتي. بيتي أصبح مكاناً يستحق أن يُحكى عنه.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">م</div>
+        <div>
+          <div class="author-name">م. محمد العتيبي</div>
+          <div class="author-title">فيلا الياسمين، الرياض</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-quote">"</div>
+      <p class="testimonial-text">أنجزوا مشروع مكتبنا في الوقت المحدد وبجودة استثنائية. الزوار يثنون على التصميم دائماً. شركة بذخ بالفعل تعيش اسمها.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">س</div>
+        <div>
+          <div class="author-name">سارة الغامدي</div>
+          <div class="author-title">مقر شركة النخبة، جدة</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-quote">"</div>
+      <p class="testimonial-text">اختيار بذخ كان أفضل قراراتي. الفريق محترف ومبدع ويعطيك اهتماماً كاملاً طوال المشروع. أنصح بهم بشدة لكل من يريد الأفضل.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">ع</div>
+        <div>
+          <div class="author-name">عبدالله الزهراني</div>
+          <div class="author-title">مطعم الأصول، الدمام</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-quote">"</div>
+      <p class="testimonial-text">من أوّل اجتماع أحسستُ أنهم يفهمون التصميم الفاخر فعلاً. الديتيل في كل زاوية يدل على احترافية عالية جداً. شكراً بذخ.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">ن</div>
+        <div>
+          <div class="author-name">نورة الشهري</div>
+          <div class="author-title">شقة لوكس، جدة</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dots -->
+  <div style="display:flex;gap:0.5rem;justify-content:center;margin-top:2.5rem;">
+    <div style="width:30px;height:2px;background:var(--gold);"></div>
+    <div style="width:8px;height:2px;background:var(--gray-light);"></div>
+    <div style="width:8px;height:2px;background:var(--gray-light);"></div>
+    <div style="width:8px;height:2px;background:var(--gray-light);"></div>
+  </div>
+</section>
+
+<!-- ===== BLOG PREVIEW ===== -->
+<section class="section blog-section">
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:0;" class="reveal">
+    <div>
+      <div class="section-label"><span>مدونتنا</span></div>
+      <h2 class="section-heading">أحدث <span class="gold">المقالات</span></h2>
+      <div class="gold-divider"></div>
+    </div>
+    <a href="pages/blog.html" class="btn-outline" style="flex-shrink:0;">كل المقالات →</a>
+  </div>
+
+  <div class="blog-grid">
+    <div class="blog-card reveal reveal-delay-1">
+      <div class="blog-thumb">
+        <div class="blog-thumb-bg p-bg-1">🏠</div>
+        <span class="blog-cat">تصميم داخلي</span>
+      </div>
+      <div class="blog-body">
+        <div class="blog-date">١٥ مايو ٢٠٢٥</div>
+        <h3 class="blog-title">ترندات التصميم الداخلي لعام 2025</h3>
+        <p class="blog-excerpt">استكشف أبرز الاتجاهات التي تُشكّل عالم التصميم الداخلي الفاخر هذا العام، من المواد الطبيعية إلى الألوان الترابية.</p>
+        <a href="pages/blog.html" class="blog-link">اقرأ المزيد ←</a>
+      </div>
+    </div>
+
+    <div class="blog-card reveal reveal-delay-2">
+      <div class="blog-thumb">
+        <div class="blog-thumb-bg p-bg-2">💡</div>
+        <span class="blog-cat">إضاءة</span>
+      </div>
+      <div class="blog-body">
+        <div class="blog-date">٢ مايو ٢٠٢٥</div>
+        <h3 class="blog-title">سحر الإضاءة: كيف تحوّل أي غرفة؟</h3>
+        <p class="blog-excerpt">الإضاءة الصحيحة قادرة على تغيير روح المكان بالكامل. تعرّف على أسرار توظيف الإضاءة في التصاميم الفاخرة.</p>
+        <a href="pages/blog.html" class="blog-link">اقرأ المزيد ←</a>
+      </div>
+    </div>
+
+    <div class="blog-card reveal reveal-delay-3">
+      <div class="blog-thumb">
+        <div class="blog-thumb-bg p-bg-5">🛋️</div>
+        <span class="blog-cat">أثاث فاخر</span>
+      </div>
+      <div class="blog-body">
+        <div class="blog-date">١٨ أبريل ٢٠٢٥</div>
+        <h3 class="blog-title">دليل اختيار الأثاث الفاخر</h3>
+        <p class="blog-excerpt">من الجلد الإيطالي إلى الخشب المصمت، نقدم لك دليلاً شاملاً لاختيار أثاث يدوم ويبقى أنيقاً على مر السنين.</p>
+        <a href="pages/blog.html" class="blog-link">اقرأ المزيد ←</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PARTNERS ===== -->
+<section class="partners-section">
+  <div class="partners-label">شركاء النجاح</div>
+  <div class="partners-track">
+    <div class="partner-logo">RIYADH GROUP</div>
+    <div class="partner-logo">AL-FUTTAIM</div>
+    <div class="partner-logo">LUXURY LIVING</div>
+    <div class="partner-logo">NOOR DESIGN</div>
+    <div class="partner-logo">PALACE HOTELS</div>
+    <div class="partner-logo">ELITE SPACES</div>
+    <div class="partner-logo">CROWN STONE</div>
+  </div>
+</section>
+
+<!-- ===== CONTACT STRIP ===== -->
+<section class="section" style="background:var(--gold);padding:80px 5%;text-align:center;">
+  <div class="reveal">
+    <div style="font-size:0.75rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--dark-2);margin-bottom:1rem;font-weight:600;">ابدأ مشروعك اليوم</div>
+    <h2 style="font-family:var(--font-en);font-size:clamp(2rem,4vw,3.5rem);font-weight:700;color:var(--dark);margin-bottom:1.2rem;">هل أنت مستعد لتجربة الفخامة الحقيقية؟</h2>
+    <p style="font-size:0.95rem;color:var(--dark-2);max-width:550px;margin:0 auto 2.5rem;opacity:0.75;">تواصل معنا اليوم للحصول على استشارة مجانية ودراسة مشروعك بعيون خبراء التصميم.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <a href="pages/contact.html" style="background:var(--dark);color:var(--gold);padding:1rem 2.5rem;font-size:0.85rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;transition:all 0.3s ease;" onmouseover="this.style.background='#111'" onmouseout="this.style.background='var(--dark)'">تواصل معنا</a>
+      <a href="#" onclick="openModal()" style="background:transparent;color:var(--dark);padding:1rem 2.5rem;font-size:0.85rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;border:2px solid var(--dark);transition:all 0.3s ease;">طلب خدمة</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-main">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo" style="display:inline-block;margin-bottom:1.2rem;">
+        BADHAKH
+        <span>فن التصميم الفاخر</span>
+      </a>
+      <p>نحن نؤمن بأن كل فضاء يستحق أن يكون تحفة فنية. بذخ تجسّد هذا الإيمان في كل مشروع.</p>
+      <div class="footer-social">
+        <div class="social-btn" title="Instagram">IG</div>
+        <div class="social-btn" title="Twitter">X</div>
+        <div class="social-btn" title="LinkedIn">in</div>
+        <div class="social-btn" title="Pinterest">P</div>
+        <div class="social-btn" title="YouTube">▶</div>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>الشركة</h4>
+      <a href="pages/about.html">من نحن</a>
+      <a href="pages/portfolio.html">أعمالنا</a>
+      <a href="pages/blog.html">المدونة</a>
+      <a href="pages/partners.html">شركاؤنا</a>
+    </div>
+    <div class="footer-col">
+      <h4>الخدمات</h4>
+      <a href="pages/services.html">التصميم الداخلي</a>
+      <a href="pages/services.html">التصميم الخارجي</a>
+      <a href="pages/services.html">الأثاث والديكور</a>
+      <a href="pages/services.html">تصميم الإضاءة</a>
+      <a href="pages/services.html">إدارة المشاريع</a>
+    </div>
+    <div class="footer-col">
+      <h4>تواصل</h4>
+      <a href="tel:+966500000000">+966 50 000 0000</a>
+      <a href="mailto:info@badhakh.com">info@badhakh.com</a>
+      <a href="#">الرياض، المملكة العربية السعودية</a>
+      <a href="pages/admin.html" style="color:var(--gray);font-size:0.7rem;margin-top:1rem;">لوحة الإدارة</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 BADHAKH — جميع الحقوق محفوظة</span>
+    <span>صُنع بشغف في <a href="#">المملكة العربية السعودية</a></span>
+  </div>
+</footer>
+
+<!-- ===== REQUEST SERVICE MODAL ===== -->
+<div class="modal-overlay" id="serviceModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-title">طلب خدمة</div>
+    <p class="modal-sub">أرسل لنا تفاصيل مشروعك وسنتواصل معك خلال 24 ساعة.</p>
+
+    <div class="form-group">
+      <label>الاسم الكامل *</label>
+      <input type="text" placeholder="أدخل اسمك الكامل">
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>البريد الإلكتروني *</label>
+        <input type="email" placeholder="example@email.com">
+      </div>
+      <div class="form-group">
+        <label>رقم الجوال *</label>
+        <input type="tel" placeholder="+966 5X XXX XXXX">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>نوع الخدمة</label>
+      <select>
+        <option>— اختر الخدمة —</option>
+        <option>التصميم الداخلي</option>
+        <option>التصميم الخارجي</option>
+        <option>الأثاث والديكور</option>
+        <option>تصميم الإضاءة</option>
+        <option>تخطيط الفضاء</option>
+        <option>إدارة المشاريع</option>
+        <option>خدمة شاملة</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>الميزانية التقريبية</label>
+      <select>
+        <option>— حدد النطاق —</option>
+        <option>أقل من 100,000 ريال</option>
+        <option>100,000 – 500,000 ريال</option>
+        <option>500,000 – 1,000,000 ريال</option>
+        <option>أكثر من 1,000,000 ريال</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>تفاصيل المشروع</label>
+      <textarea rows="4" placeholder="صف مشروعك، الموقع، المساحة، والتوقعات..."></textarea>
+    </div>
+    <button class="form-submit" onclick="submitForm()">إرسال الطلب ✦</button>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

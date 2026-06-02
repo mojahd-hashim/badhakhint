@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>شركاؤنا — بذخ BADHAKH</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .partners-grid-full { display:grid; grid-template-columns:repeat(4,1fr); gap:2px; margin-top:4rem; }
+    .partner-card { background:var(--dark-2); border:1px solid var(--border); padding:3rem 2rem; text-align:center; transition:var(--transition); cursor:pointer; }
+    .partner-card:hover { border-color:var(--gold); background:var(--dark); }
+    .partner-card-logo { font-family:var(--font-en); font-size:1.4rem; font-weight:900; letter-spacing:0.12em; text-transform:uppercase; color:var(--gray); margin-bottom:0.8rem; transition:color 0.3s ease; }
+    .partner-card:hover .partner-card-logo { color:var(--gold); }
+    .partner-card-type { font-size:0.68rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold-dark); }
+    .partner-card-desc { font-size:0.78rem; color:var(--gray); margin-top:0.8rem; line-height:1.6; }
+    .partner-icon { font-size:2.5rem; margin-bottom:1.2rem; opacity:0.5; }
+    .partner-card:hover .partner-icon { opacity:1; }
+    .become-partner { background:var(--dark-2); border:1px solid var(--border); padding:3rem 2rem; text-align:center; transition:var(--transition); }
+    .become-partner:hover { border-color:var(--gold); }
+    @media(max-width:1000px){ .partners-grid-full{grid-template-columns:repeat(3,1fr);} }
+    @media(max-width:700px){ .partners-grid-full{grid-template-columns:repeat(2,1fr);} }
+    @media(max-width:450px){ .partners-grid-full{grid-template-columns:1fr;} }
+  </style>
+</head>
+<body>
+<div id="loader"><div class="loader-content"><div class="loader-logo">BADHAKH</div><div class="loader-bar"></div></div></div>
+<div class="custom-cursor" id="cursor"></div><div class="cursor-follower" id="cursor-follower"></div>
+<div class="toast" id="toast">✓ تم إرسال طلب الشراكة</div>
+
+<nav id="navbar">
+  <a href="../index.html" class="nav-logo">BADHAKH<span>فن التصميم الفاخر</span></a>
+  <ul class="nav-links">
+    <li><a href="../index.html">الرئيسية</a></li><li><a href="services.html">الخدمات</a></li>
+    <li><a href="portfolio.html">أعمالنا</a></li><li><a href="about.html">من نحن</a></li>
+    <li><a href="blog.html">المدونة</a></li><li><a href="partners.html" class="active">شركاؤنا</a></li>
+    <li><a href="contact.html">تواصل</a></li><li><a href="#" class="nav-cta" onclick="openModal()">طلب خدمة</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="../index.html" onclick="toggleMenu()">الرئيسية</a><a href="services.html" onclick="toggleMenu()">الخدمات</a>
+  <a href="portfolio.html" onclick="toggleMenu()">أعمالنا</a><a href="about.html" onclick="toggleMenu()">من نحن</a>
+  <a href="blog.html" onclick="toggleMenu()">المدونة</a><a href="partners.html" onclick="toggleMenu()">شركاؤنا</a>
+  <a href="contact.html" onclick="toggleMenu()">تواصل</a>
+  <a href="#" onclick="openModal();toggleMenu();" style="color:var(--gold);border:1px solid var(--gold);padding:0.8rem 2.5rem;">طلب خدمة</a>
+</div>
+
+<div class="page-hero" style="padding-top:85px;">
+  <div class="deco-text">Partners</div>
+  <div class="page-hero-content">
+    <div class="breadcrumb"><a href="../index.html">الرئيسية</a><span>/</span><span>شركاؤنا</span></div>
+    <h1>شركاء <span class="gold">النجاح</span></h1>
+    <p>علاقات بنيناها على الثقة والتميز المشترك</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="section-header-centered reveal">
+    <div class="section-label"><span>شركاؤنا</span></div>
+    <h2 class="section-heading">معاً نصنع <span class="gold">الاستثنائي</span></h2>
+    <div class="gold-divider gold-divider-center"></div>
+    <p class="section-sub" style="margin:0 auto;">نفخر بشراكاتنا مع أبرز العلامات التجارية الفاخرة والشركات الرائدة في مجالات البناء والتصميم والضيافة.</p>
+  </div>
+
+  <!-- Category: Luxury Materials -->
+  <div style="margin-top:5rem;" class="reveal">
+    <div style="font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem;border-bottom:1px solid var(--border);padding-bottom:1rem;">مواد البناء والتشطيب الفاخرة</div>
+    <div class="partners-grid-full">
+      <div class="partner-card">
+        <div class="partner-icon">🪨</div>
+        <div class="partner-card-logo">MARMI ELITE</div>
+        <div class="partner-card-type">رخام · إيطاليا</div>
+        <p class="partner-card-desc">أفخر أنواع الرخام والغرانيت الإيطالي الأصيل لمشاريعنا.</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-icon">🪵</div>
+        <div class="partner-card-logo">WOOD PALACE</div>
+        <div class="partner-card-type">أخشاب فاخرة · فرنسا</div>
+        <p class="partner-card-desc">أخشاب طبيعية نادرة معالجة بأعلى معايير الجودة الأوروبية.</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-icon">🏗️</div>
+        <div class="partner-card-logo">CROWN STONE</div>
+        <div class="partner-card-type">حجر طبيعي · السعودية</div>
+        <p class="partner-card-desc">أجود أنواع الحجر المحلي والمستورد لتشطيبات استثنائية.</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-icon">🪟</div>
+        <div class="partner-card-logo">GLASS ARTE</div>
+        <div class="partner-card-type">زجاج فاخر · ألمانيا</div>
+        <p class="partner-card-desc">زجاج مزخرف ومعالج عالي الجودة للواجهات والتصاميم الداخلية.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Category: Furniture -->
+  <div style="margin-top:4rem;" class="reveal">
+    <div style="font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem;border-bottom:1px solid var(--border);padding-bottom:1rem;">الأثاث والديكور الفاخر</div>
+    <div class="partners-grid-full">
+      <div class="partner-card">
+        <div class="partner-icon">🛋️</div>
+        <div class="partner-card-logo">LUXURY LIVING</div>
+        <div class="partner-card-type">أثاث فاخر · إيطاليا</div>
+        <p class="partner-card-desc">قطع أثاث إيطالية حصرية تجمع بين الفن والوظيفة.</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-icon">💡</div>
+        <div class="partner-card-logo">LUMIÈRE PRO</div>
+        <div class="partner-card-type">إضاءة فاخرة · فرنسا</div>
+        <p class="partner-card-desc">ثريات وأنظمة إضاءة احترافية من أرقى دور الإضاءة الفرنسية.</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-icon">🏺</div>
+        <div class="partner-card-logo">NOOR DECOR</div>
+        <div class="partner-card-type">إكسسوارات · الإمارات</div>
+        <p class="partner-card-desc">مجموعات ديكور حصرية تعكس الرقي الشرقي والمعاصر.</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-icon">🪑</div>
+        <div class="partner-card-logo">ARTE DIVANI</div>
+        <div class="partner-card-type">جلود فاخرة · إيطاليا</div>
+        <p class="partner-card-desc">أفخر أنواع الجلود الطبيعية الإيطالية لقطع الأثاث الراقي.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Category: Developers -->
+  <div style="margin-top:4rem;" class="reveal">
+    <div style="font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem;border-bottom:1px solid var(--border);padding-bottom:1rem;">مطورو العقارات والضيافة</div>
+    <div class="partners-grid-full">
+      <div class="partner-card">
+        <div class="partner-icon">🏙️</div>
+        <div class="partner-card-logo">RIYADH GROUP</div>
+        <div class="partner-card-type">تطوير عقاري · السعودية</div>
+        <p class="partner-card-desc">شراكة استراتيجية في مشاريع سكنية وتجارية فاخرة بالرياض.</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-icon">🏨</div>
+        <div class="partner-card-logo">PALACE HOTELS</div>
+        <div class="partner-card-type">ضيافة فاخرة · السعودية</div>
+        <p class="partner-card-desc">تصميم وتنفيذ مشاريع الفنادق والمنتجعات الفاخرة.</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-icon">🏢</div>
+        <div class="partner-card-logo">AL-FUTTAIM</div>
+        <div class="partner-card-type">مجموعة عقارية · الإمارات</div>
+        <p class="partner-card-desc">شراكة في مشاريع التصميم التجاري الراقي في منطقة الخليج.</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-icon">🌟</div>
+        <div class="partner-card-logo">ELITE SPACES</div>
+        <div class="partner-card-type">مطور · الكويت</div>
+        <p class="partner-card-desc">مشاريع فللات وقصور فاخرة في الكويت والسعودية.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Become Partner CTA -->
+  <div style="margin-top:5rem;background:var(--dark-2);border:1px solid var(--border);padding:4rem;text-align:center;" class="reveal">
+    <div style="font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;">انضم إلينا</div>
+    <h2 style="font-family:var(--font-en);font-size:clamp(1.8rem,3vw,2.5rem);font-weight:700;color:var(--white);margin-bottom:1rem;">هل تريد أن تكون شريكنا؟</h2>
+    <div class="gold-divider gold-divider-center"></div>
+    <p style="font-size:0.9rem;color:var(--gray);max-width:550px;margin:0 auto 2.5rem;line-height:1.8;">ننظر دائماً إلى شراكات جديدة مع علامات تجارية فاخرة تشاركنا قيم التميز والإبداع. تواصل معنا لاستكشاف فرص التعاون.</p>
+    <a href="contact.html" class="btn-primary">تواصل للشراكة</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-main">
+    <div class="footer-brand"><a href="../index.html" class="nav-logo" style="display:inline-block;margin-bottom:1.2rem;">BADHAKH<span>فن التصميم الفاخر</span></a><p>نؤمن بأن كل فضاء يستحق أن يكون تحفة فنية.</p></div>
+    <div class="footer-col"><h4>الشركة</h4><a href="about.html">من نحن</a><a href="portfolio.html">أعمالنا</a><a href="blog.html">المدونة</a></div>
+    <div class="footer-col"><h4>الخدمات</h4><a href="services.html">التصميم الداخلي</a><a href="services.html">التصميم الخارجي</a></div>
+    <div class="footer-col"><h4>تواصل</h4><a href="tel:+966500000000">+966 50 000 0000</a><a href="mailto:info@badhakh.com">info@badhakh.com</a></div>
+  </div>
+  <div class="footer-bottom"><span>© 2025 BADHAKH — جميع الحقوق محفوظة</span></div>
+</footer>
+
+<div class="modal-overlay" id="serviceModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-title">طلب خدمة</div><p class="modal-sub">أرسل لنا تفاصيل مشروعك.</p>
+    <div class="form-group"><label>الاسم الكامل *</label><input type="text" placeholder="أدخل اسمك الكامل"></div>
+    <div class="form-row">
+      <div class="form-group"><label>البريد الإلكتروني</label><input type="email" placeholder="example@email.com"></div>
+      <div class="form-group"><label>رقم الجوال</label><input type="tel" placeholder="+966 5X XXX XXXX"></div>
+    </div>
+    <div class="form-group"><label>تفاصيل المشروع</label><textarea rows="4" placeholder="صف مشروعك..."></textarea></div>
+    <button class="form-submit" onclick="submitForm()">إرسال الطلب ✦</button>
+  </div>
+</div>
+<script src="../js/main.js"></script>
+</body>
+</html>

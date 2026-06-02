@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>أعمالنا — بذخ BADHAKH</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .portfolio-full-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
+    .portfolio-full-item { aspect-ratio:4/3; position:relative; overflow:hidden; cursor:pointer; background:var(--dark-2); }
+    .portfolio-full-item:nth-child(4n+1) { grid-column:span 2; }
+    @media(max-width:900px){ .portfolio-full-grid{grid-template-columns:1fr 1fr;} .portfolio-full-item:nth-child(4n+1){grid-column:span 1;} }
+    @media(max-width:600px){ .portfolio-full-grid{grid-template-columns:1fr;} }
+  </style>
+</head>
+<body>
+<div id="loader"><div class="loader-content"><div class="loader-logo">BADHAKH</div><div class="loader-bar"></div></div></div>
+<div class="custom-cursor" id="cursor"></div><div class="cursor-follower" id="cursor-follower"></div>
+<div class="toast" id="toast">✓ تم إرسال طلبك</div>
+
+<nav id="navbar">
+  <a href="../index.html" class="nav-logo">BADHAKH<span>فن التصميم الفاخر</span></a>
+  <ul class="nav-links">
+    <li><a href="../index.html">الرئيسية</a></li><li><a href="services.html">الخدمات</a></li>
+    <li><a href="portfolio.html" class="active">أعمالنا</a></li><li><a href="about.html">من نحن</a></li>
+    <li><a href="blog.html">المدونة</a></li><li><a href="partners.html">شركاؤنا</a></li>
+    <li><a href="contact.html">تواصل</a></li><li><a href="#" class="nav-cta" onclick="openModal()">طلب خدمة</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="../index.html" onclick="toggleMenu()">الرئيسية</a><a href="services.html" onclick="toggleMenu()">الخدمات</a>
+  <a href="portfolio.html" onclick="toggleMenu()">أعمالنا</a><a href="about.html" onclick="toggleMenu()">من نحن</a>
+  <a href="blog.html" onclick="toggleMenu()">المدونة</a><a href="partners.html" onclick="toggleMenu()">شركاؤنا</a>
+  <a href="contact.html" onclick="toggleMenu()">تواصل</a>
+  <a href="#" onclick="openModal();toggleMenu();" style="color:var(--gold);border:1px solid var(--gold);padding:0.8rem 2.5rem;">طلب خدمة</a>
+</div>
+
+<div class="page-hero" style="padding-top:85px;">
+  <div class="deco-text">Works</div>
+  <div class="page-hero-content">
+    <div class="breadcrumb"><a href="../index.html">الرئيسية</a><span>/</span><span>معرض الأعمال</span></div>
+    <h1>أعمال <span class="gold">تتحدث</span></h1>
+    <p>350+ مشروع فاخر حول المملكة والعالم</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="portfolio-filter reveal" style="margin-bottom:3rem;">
+    <button class="filter-btn active" onclick="filterPortfolio(this,'all')">الكل</button>
+    <button class="filter-btn" onclick="filterPortfolio(this,'residential')">سكني</button>
+    <button class="filter-btn" onclick="filterPortfolio(this,'commercial')">تجاري</button>
+    <button class="filter-btn" onclick="filterPortfolio(this,'hospitality')">ضيافة</button>
+    <button class="filter-btn" onclick="filterPortfolio(this,'exterior')">خارجي</button>
+    <button class="filter-btn" onclick="filterPortfolio(this,'renovation')">تجديد</button>
+  </div>
+
+  <div class="portfolio-full-grid reveal">
+    <div class="portfolio-full-item p-bg-1" data-cat="residential">
+      <div class="interior-visual">🏠</div>
+      <div class="portfolio-overlay" style="opacity:1;background:linear-gradient(to top,rgba(0,0,0,0.8) 0%,transparent 50%);">
+        <div class="portfolio-info"><h3>فيلا الياسمين</h3><p>سكني · الرياض · 2024</p></div>
+      </div>
+    </div>
+    <div class="portfolio-full-item p-bg-2" data-cat="commercial">
+      <div class="interior-visual">🏢</div>
+      <div class="portfolio-overlay"><div class="portfolio-info"><h3>مقر شركة النخبة</h3><p>تجاري · جدة · 2024</p></div></div>
+    </div>
+    <div class="portfolio-full-item p-bg-3" data-cat="hospitality">
+      <div class="interior-visual">🏨</div>
+      <div class="portfolio-overlay"><div class="portfolio-info"><h3>لاونج بذخ</h3><p>ضيافة · الدمام · 2024</p></div></div>
+    </div>
+    <div class="portfolio-full-item p-bg-4" data-cat="exterior">
+      <div class="interior-visual">🌿</div>
+      <div class="portfolio-overlay"><div class="portfolio-info"><h3>حديقة القصر الملكي</h3><p>خارجي · الرياض · 2023</p></div></div>
+    </div>
+    <div class="portfolio-full-item p-bg-5" data-cat="residential">
+      <div class="interior-visual">🛏️</div>
+      <div class="portfolio-overlay"><div class="portfolio-info"><h3>الجناح الملكي</h3><p>سكني · جدة · 2023</p></div></div>
+    </div>
+    <div class="portfolio-full-item p-bg-6" data-cat="commercial">
+      <div class="interior-visual">☕</div>
+      <div class="portfolio-overlay"><div class="portfolio-info"><h3>كافيه الفن</h3><p>تجاري · أبها · 2023</p></div></div>
+    </div>
+    <div class="portfolio-full-item p-bg-1" data-cat="renovation">
+      <div class="interior-visual">🏡</div>
+      <div class="portfolio-overlay"><div class="portfolio-info"><h3>قصر النخيل</h3><p>تجديد · الرياض · 2023</p></div></div>
+    </div>
+    <div class="portfolio-full-item p-bg-2" data-cat="hospitality">
+      <div class="interior-visual">🍽️</div>
+      <div class="portfolio-overlay"><div class="portfolio-info"><h3>مطعم الأصول</h3><p>ضيافة · الدمام · 2022</p></div></div>
+    </div>
+    <div class="portfolio-full-item p-bg-3" data-cat="residential">
+      <div class="interior-visual">🛋️</div>
+      <div class="portfolio-overlay"><div class="portfolio-info"><h3>بنتهاوس جدة</h3><p>سكني · جدة · 2022</p></div></div>
+    </div>
+    <div class="portfolio-full-item p-bg-5" data-cat="exterior">
+      <div class="interior-visual">🏊</div>
+      <div class="portfolio-overlay"><div class="portfolio-info"><h3>منتجع النخبة</h3><p>خارجي · الطائف · 2022</p></div></div>
+    </div>
+    <div class="portfolio-full-item p-bg-4" data-cat="commercial">
+      <div class="interior-visual">💎</div>
+      <div class="portfolio-overlay"><div class="portfolio-info"><h3>متجر المجوهرات الفاخر</h3><p>تجاري · الرياض · 2022</p></div></div>
+    </div>
+    <div class="portfolio-full-item p-bg-6" data-cat="renovation">
+      <div class="interior-visual">🏛️</div>
+      <div class="portfolio-overlay"><div class="portfolio-info"><h3>فيلا التراث</h3><p>تجديد · مكة المكرمة · 2021</p></div></div>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin-top:4rem;" class="reveal">
+    <a href="#" onclick="openModal()" class="btn-primary">هل أنت مستعد لمشروعك الفاخر؟</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-main">
+    <div class="footer-brand"><a href="../index.html" class="nav-logo" style="display:inline-block;margin-bottom:1.2rem;">BADHAKH<span>فن التصميم الفاخر</span></a><p>نؤمن بأن كل فضاء يستحق أن يكون تحفة فنية.</p></div>
+    <div class="footer-col"><h4>الشركة</h4><a href="about.html">من نحن</a><a href="portfolio.html">أعمالنا</a><a href="blog.html">المدونة</a></div>
+    <div class="footer-col"><h4>الخدمات</h4><a href="services.html">التصميم الداخلي</a><a href="services.html">التصميم الخارجي</a><a href="services.html">الأثاث والديكور</a></div>
+    <div class="footer-col"><h4>تواصل</h4><a href="tel:+966500000000">+966 50 000 0000</a><a href="mailto:info@badhakh.com">info@badhakh.com</a></div>
+  </div>
+  <div class="footer-bottom"><span>© 2025 BADHAKH — جميع الحقوق محفوظة</span></div>
+</footer>
+
+<div class="modal-overlay" id="serviceModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-title">طلب خدمة</div><p class="modal-sub">أرسل لنا تفاصيل مشروعك.</p>
+    <div class="form-group"><label>الاسم الكامل *</label><input type="text" placeholder="أدخل اسمك الكامل"></div>
+    <div class="form-row">
+      <div class="form-group"><label>البريد الإلكتروني</label><input type="email" placeholder="example@email.com"></div>
+      <div class="form-group"><label>رقم الجوال</label><input type="tel" placeholder="+966 5X XXX XXXX"></div>
+    </div>
+    <div class="form-group"><label>تفاصيل المشروع</label><textarea rows="4" placeholder="صف مشروعك..."></textarea></div>
+    <button class="form-submit" onclick="submitForm()">إرسال الطلب ✦</button>
+  </div>
+</div>
+<script src="../js/main.js"></script>
+</body>
+</html>
