@@ -7,6 +7,43 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
+  <style>
+    /* إضافات بسيطة لضمان ظهور الصور بشكل متناسق */
+    .service-img-placeholder {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0.85;
+      transition: opacity 0.5s ease;
+    }
+    .service-img-wrapper {
+      position: relative;
+      overflow: hidden;
+    }
+    .service-img-wrapper:hover .service-img-placeholder {
+      opacity: 1;
+      transform: scale(1.02);
+    }
+    .service-label-on-img {
+      position: absolute;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--gold);
+      color: var(--dark);
+      padding: 0.8rem 1.5rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      z-index: 2;
+    }
+    .service-label-on-img-left {
+      left: 2rem;
+      right: auto;
+    }
+  </style>
 </head>
 <body>
 <div id="loader"><div class="loader-content"><div class="loader-logo">BADHAKH</div><div class="loader-bar"></div></div></div>
@@ -58,11 +95,11 @@
     <p class="section-sub" style="margin:0 auto;">نقدم مجموعة متكاملة من خدمات التصميم التي تلبي كل احتياجاتك وتتجاوز توقعاتك.</p>
   </div>
 
-  <!-- Service 1 -->
+  <!-- Service 1 - Interior Design مع صورة -->
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;margin-top:5rem;" class="reveal">
-    <div style="aspect-ratio:4/3;background:linear-gradient(135deg,#1a1208,#2d2010);display:flex;align-items:center;justify-content:center;font-size:7rem;opacity:0.3;position:relative;">
-      🏛️
-      <div style="position:absolute;bottom:2rem;right:2rem;background:var(--gold);color:var(--dark);padding:0.8rem 1.5rem;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;">التصميم الداخلي</div>
+    <div class="service-img-wrapper" style="aspect-ratio:4/3;position:relative;overflow:hidden;">
+      <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&auto=format" alt="تصميم داخلي فاخر" class="service-img-placeholder" style="width:100%;height:100%;object-fit:cover;opacity:0.85;">
+      <div class="service-label-on-img">التصميم الداخلي</div>
     </div>
     <div>
       <div class="section-label"><span>01</span></div>
@@ -84,7 +121,7 @@
     </div>
   </div>
 
-  <!-- Service 2 -->
+  <!-- Service 2 - Exterior Design مع صورة -->
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;margin-top:6rem;" class="reveal">
     <div>
       <div class="section-label"><span>02</span></div>
@@ -94,9 +131,9 @@
       <p style="color:var(--gray);font-size:0.9rem;line-height:1.9;margin-bottom:2rem;">من الحدائق الفاخرة إلى المداخل الاستثنائية، نجعل كل متر مربع خارجي قصة بصرية رائعة.</p>
       <a href="#" onclick="openModal()" class="btn-primary">اطلب هذه الخدمة</a>
     </div>
-    <div style="aspect-ratio:4/3;background:linear-gradient(135deg,#0d1520,#162030);display:flex;align-items:center;justify-content:center;font-size:7rem;opacity:0.3;position:relative;">
-      🏗️
-      <div style="position:absolute;bottom:2rem;left:2rem;background:var(--gold);color:var(--dark);padding:0.8rem 1.5rem;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;">التصميم الخارجي</div>
+    <div class="service-img-wrapper" style="aspect-ratio:4/3;position:relative;overflow:hidden;">
+      <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&auto=format" alt="تصميم خارجي فاخر" class="service-img-placeholder" style="width:100%;height:100%;object-fit:cover;opacity:0.85;">
+      <div class="service-label-on-img service-label-on-img-left">التصميم الخارجي</div>
     </div>
   </div>
 
@@ -155,6 +192,15 @@
         <p class="service-desc">نحوّل الفضاءات القديمة إلى تحف معمارية حديثة مع الحفاظ على روح المكان الأصيلة وجوهره.</p>
         <a href="#" onclick="openModal()" class="service-link">اطلب الخدمة ←</a>
       </div>
+      <!-- خدمة جديدة: تشغيل وصيانة المرافق -->
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-num">09</div>
+        <span class="service-icon">⚙️🔧</span>
+        <div class="service-title">Facility Management</div>
+        <div class="service-title-ar">تشغيل وصيانة المرافق</div>
+        <p class="service-desc">حلول متكاملة لإدارة وتشغيل وصيانة المباني والمرافق بأعلى معايير الجودة، تشمل أنظمة التكييف والكهرباء والميكانيكا، لضمان استمرارية الأداء بكفاءة احترافية وراحة تامة.</p>
+        <a href="#" onclick="openModal()" class="service-link">اطلب الخدمة ←</a>
+      </div>
     </div>
   </div>
 </section>
@@ -175,8 +221,8 @@
       <p>نؤمن بأن كل فضاء يستحق أن يكون تحفة فنية.</p>
     </div>
     <div class="footer-col"><h4>الشركة</h4><a href="about.html">من نحن</a><a href="portfolio.html">أعمالنا</a><a href="blog.html">المدونة</a></div>
-    <div class="footer-col"><h4>الخدمات</h4><a href="services.html">التصميم الداخلي</a><a href="services.html">التصميم الخارجي</a><a href="services.html">الأثاث والديكور</a></div>
-    <div class="footer-col"><h4>تواصل</h4><a href="tel:+966500000000">+966 50 000 0000</a><a href="mailto:info@badhakh.com">info@badhakh.com</a></div>
+    <div class="footer-col"><h4>الخدمات</h4><a href="services.html">التصميم الداخلي</a><a href="services.html">التصميم الخارجي</a><a href="services.html">الأثاث والديكور</a><a href="services.html">تشغيل المرافق</a></div>
+    <div class="footer-col"><h4>تواصل</h4><a href="tel:+966540728777">+966540728777</a><a href="mailto:info@badhakh.com">info@badhakh.com</a></div>
   </div>
   <div class="footer-bottom"><span>© 2025 BADHAKH — جميع الحقوق محفوظة</span></div>
 </footer>
@@ -191,7 +237,7 @@
       <div class="form-group"><label>البريد الإلكتروني *</label><input type="email" placeholder="example@email.com"></div>
       <div class="form-group"><label>رقم الجوال *</label><input type="tel" placeholder="+966 5X XXX XXXX"></div>
     </div>
-    <div class="form-group"><label>نوع الخدمة</label><select><option>— اختر الخدمة —</option><option>التصميم الداخلي</option><option>التصميم الخارجي</option><option>الأثاث والديكور</option><option>تصميم الإضاءة</option></select></div>
+    <div class="form-group"><label>نوع الخدمة</label><select><option>— اختر الخدمة —</option><option>التصميم الداخلي</option><option>التصميم الخارجي</option><option>الأثاث والديكور</option><option>تصميم الإضاءة</option><option>تشغيل وصيانة المرافق</option></select></div>
     <div class="form-group"><label>تفاصيل المشروع</label><textarea rows="4" placeholder="صف مشروعك..."></textarea></div>
     <button class="form-submit" onclick="submitForm()">إرسال الطلب ✦</button>
   </div>
