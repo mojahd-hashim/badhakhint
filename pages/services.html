@@ -8,7 +8,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
   <style>
-    /* إضافات بسيطة لضمان ظهور الصور بشكل متناسق */
     .service-img-placeholder {
       width: 100%;
       height: 100%;
@@ -43,6 +42,17 @@
       left: 2rem;
       right: auto;
     }
+    .service-card-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 1.5rem;
+      transition: transform 0.4s ease;
+    }
+    .service-card:hover .service-card-img {
+      transform: scale(1.02);
+    }
   </style>
 </head>
 <body>
@@ -76,7 +86,6 @@
   <a href="#" onclick="openModal();toggleMenu();" style="color:var(--gold);border:1px solid var(--gold);padding:0.8rem 2.5rem;">طلب خدمة</a>
 </div>
 
-<!-- Page Hero -->
 <div class="page-hero" style="padding-top:85px;">
   <div class="deco-text">Services</div>
   <div class="page-hero-content">
@@ -86,7 +95,6 @@
   </div>
 </div>
 
-<!-- Services Detail -->
 <section class="section">
   <div class="section-header-centered reveal">
     <div class="section-label"><span>ما نقدمه</span></div>
@@ -95,7 +103,7 @@
     <p class="section-sub" style="margin:0 auto;">نقدم مجموعة متكاملة من خدمات التصميم التي تلبي كل احتياجاتك وتتجاوز توقعاتك.</p>
   </div>
 
-  <!-- Service 1 - Interior Design مع صورة -->
+  <!-- Service 1 - Interior Design -->
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;margin-top:5rem;" class="reveal">
     <div class="service-img-wrapper" style="aspect-ratio:4/3;position:relative;overflow:hidden;">
       <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&auto=format" alt="تصميم داخلي فاخر" class="service-img-placeholder" style="width:100%;height:100%;object-fit:cover;opacity:0.85;">
@@ -121,7 +129,7 @@
     </div>
   </div>
 
-  <!-- Service 2 - Exterior Design مع صورة -->
+  <!-- Service 2 - Exterior Design - تم تغيير الصورة -->
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;margin-top:6rem;" class="reveal">
     <div>
       <div class="section-label"><span>02</span></div>
@@ -132,7 +140,7 @@
       <a href="#" onclick="openModal()" class="btn-primary">اطلب هذه الخدمة</a>
     </div>
     <div class="service-img-wrapper" style="aspect-ratio:4/3;position:relative;overflow:hidden;">
-      <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&auto=format" alt="تصميم خارجي فاخر" class="service-img-placeholder" style="width:100%;height:100%;object-fit:cover;opacity:0.85;">
+      <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&auto=format" alt="تصميم خارجي فاخر - فيلا عصرية" class="service-img-placeholder" style="width:100%;height:100%;object-fit:cover;opacity:0.85;">
       <div class="service-label-on-img service-label-on-img-left">التصميم الخارجي</div>
     </div>
   </div>
@@ -144,7 +152,9 @@
       <div class="gold-divider gold-divider-center"></div>
     </div>
     <div class="services-grid" style="margin-top:3rem;">
+      
       <div class="service-card reveal reveal-delay-1">
+        <img class="service-card-img" src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=600&auto=format" alt="أثاث وديكور فاخر">
         <div class="service-num">03</div>
         <span class="service-icon">🛋️</span>
         <div class="service-title">Furniture & Decor</div>
@@ -152,7 +162,9 @@
         <p class="service-desc">نختار قطع أثاث وإكسسوارات حصرية من أرقى الماركات العالمية والمحلية تتناسق مع تصميمك بشكل مثالي.</p>
         <a href="#" onclick="openModal()" class="service-link">اطلب الخدمة ←</a>
       </div>
+      
       <div class="service-card reveal reveal-delay-2">
+        <img class="service-card-img" src="https://images.unsplash.com/photo-1565814636199-ae8133055c1c?w=600&auto=format" alt="تصميم إضاءة فاخر">
         <div class="service-num">04</div>
         <span class="service-icon">💡</span>
         <div class="service-title">Lighting Design</div>
@@ -160,7 +172,9 @@
         <p class="service-desc">الإضاءة روح المكان. نصمم أنظمة إضاءة ذكية تُبرز جمال كل زاوية وتخلق أجواءً تناسب كل لحظة.</p>
         <a href="#" onclick="openModal()" class="service-link">اطلب الخدمة ←</a>
       </div>
+      
       <div class="service-card reveal reveal-delay-3">
+        <img class="service-card-img" src="https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=600&auto=format" alt="تخطيط المساحات">
         <div class="service-num">05</div>
         <span class="service-icon">📐</span>
         <div class="service-title">Space Planning</div>
@@ -168,7 +182,9 @@
         <p class="service-desc">ندرس ونُحسّن توزيع كل المساحات لضمان تدفق طبيعي وتوازن مثالي يجعل الفضاء يبدو أكبر وأجمل.</p>
         <a href="#" onclick="openModal()" class="service-link">اطلب الخدمة ←</a>
       </div>
+      
       <div class="service-card reveal reveal-delay-1">
+        <img class="service-card-img" src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=600&auto=format" alt="إدارة المشاريع">
         <div class="service-num">06</div>
         <span class="service-icon">📊</span>
         <div class="service-title">Project Management</div>
@@ -176,7 +192,9 @@
         <p class="service-desc">نتولى إشراف كامل على التنفيذ من الصفر حتى التسليم مع ضمان الجودة والالتزام الكامل بالمواعيد.</p>
         <a href="#" onclick="openModal()" class="service-link">اطلب الخدمة ←</a>
       </div>
+      
       <div class="service-card reveal reveal-delay-2">
+        <img class="service-card-img" src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=600&auto=format" alt="تصور ثلاثي الأبعاد">
         <div class="service-num">07</div>
         <span class="service-icon">🎨</span>
         <div class="service-title">3D Visualization</div>
@@ -184,7 +202,9 @@
         <p class="service-desc">قبل أي تنفيذ، نُقدم لك صوراً ثلاثية الأبعاد واقعية تُريك مشروعك النهائي بكل تفاصيله الدقيقة.</p>
         <a href="#" onclick="openModal()" class="service-link">اطلب الخدمة ←</a>
       </div>
+      
       <div class="service-card reveal reveal-delay-3">
+        <img class="service-card-img" src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=600&auto=format" alt="تجديد وتطوير">
         <div class="service-num">08</div>
         <span class="service-icon">🏡</span>
         <div class="service-title">Renovation</div>
@@ -192,8 +212,9 @@
         <p class="service-desc">نحوّل الفضاءات القديمة إلى تحف معمارية حديثة مع الحفاظ على روح المكان الأصيلة وجوهره.</p>
         <a href="#" onclick="openModal()" class="service-link">اطلب الخدمة ←</a>
       </div>
-      <!-- خدمة جديدة: تشغيل وصيانة المرافق -->
+      
       <div class="service-card reveal reveal-delay-1">
+        <img class="service-card-img" src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=600&auto=format" alt="تشغيل وصيانة المرافق">
         <div class="service-num">09</div>
         <span class="service-icon">⚙️🔧</span>
         <div class="service-title">Facility Management</div>
@@ -201,11 +222,11 @@
         <p class="service-desc">حلول متكاملة لإدارة وتشغيل وصيانة المباني والمرافق بأعلى معايير الجودة، تشمل أنظمة التكييف والكهرباء والميكانيكا، لضمان استمرارية الأداء بكفاءة احترافية وراحة تامة.</p>
         <a href="#" onclick="openModal()" class="service-link">اطلب الخدمة ←</a>
       </div>
+      
     </div>
   </div>
 </section>
 
-<!-- CTA -->
 <section style="background:var(--gold);padding:80px 5%;text-align:center;">
   <div class="reveal">
     <h2 style="font-family:var(--font-en);font-size:clamp(2rem,4vw,3rem);font-weight:700;color:var(--dark);margin-bottom:1rem;">ابدأ مشروعك اليوم</h2>
