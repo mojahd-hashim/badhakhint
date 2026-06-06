@@ -12,6 +12,29 @@
     .portfolio-full-item:nth-child(4n+1) { grid-column:span 2; }
     @media(max-width:900px){ .portfolio-full-grid{grid-template-columns:1fr 1fr;} .portfolio-full-item:nth-child(4n+1){grid-column:span 1;} }
     @media(max-width:600px){ .portfolio-full-grid{grid-template-columns:1fr;} }
+
+    /* ===== IMAGES ===== */
+    .portfolio-full-item {
+      background-size: cover !important;
+      background-position: center !important;
+      background-repeat: no-repeat !important;
+    }
+    .portfolio-full-item .interior-visual { display:none !important; }
+
+    .page-hero {
+      background-image: url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb3?w=1920&q=80');
+      background-size: cover;
+      background-position: center 40%;
+      position: relative;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(5,4,2,0.88) 0%, rgba(10,8,5,0.72) 100%);
+      z-index: 0;
+    }
+    .page-hero > * { position: relative; z-index: 1; }
   </style>
 </head>
 <body>
@@ -24,7 +47,6 @@
   <ul class="nav-links">
     <li><a href="../index.html">الرئيسية</a></li><li><a href="services.html">الخدمات</a></li>
     <li><a href="portfolio.html" class="active">أعمالنا</a></li><li><a href="about.html">من نحن</a></li>
-  
     <li><a href="contact.html">تواصل</a></li><li><a href="#" class="nav-cta" onclick="openModal()">طلب خدمة</a></li>
   </ul>
   <div class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
@@ -32,7 +54,6 @@
 <div class="mobile-nav" id="mobileNav">
   <a href="../index.html" onclick="toggleMenu()">الرئيسية</a><a href="services.html" onclick="toggleMenu()">الخدمات</a>
   <a href="portfolio.html" onclick="toggleMenu()">أعمالنا</a><a href="about.html" onclick="toggleMenu()">من نحن</a>
-  <!-- <a href="blog.html" onclick="toggleMenu()">المدونة</a><a href="partners.html" onclick="toggleMenu()">شركاؤنا</a> -->
   <a href="contact.html" onclick="toggleMenu()">تواصل</a>
   <a href="#" onclick="openModal();toggleMenu();" style="color:var(--gold);border:1px solid var(--gold);padding:0.8rem 2.5rem;">طلب خدمة</a>
 </div>
@@ -57,56 +78,93 @@
   </div>
 
   <div class="portfolio-full-grid reveal">
-    <div class="portfolio-full-item p-bg-1" data-cat="residential">
+
+    <!-- 1. فيلا الياسمين — سكني — غرفة معيشة فاخرة -->
+    <div class="portfolio-full-item" data-cat="residential"
+         style="background-image:url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb3?w=1200&q=80');">
       <div class="interior-visual">🏠</div>
       <div class="portfolio-overlay" style="opacity:1;background:linear-gradient(to top,rgba(0,0,0,0.8) 0%,transparent 50%);">
         <div class="portfolio-info"><h3>فيلا الياسمين</h3><p>سكني · الرياض · 2024</p></div>
       </div>
     </div>
-    <div class="portfolio-full-item p-bg-2" data-cat="commercial">
+
+    <!-- 2. مقر شركة النخبة — تجاري — لوبي مكتب فاخر -->
+    <div class="portfolio-full-item" data-cat="commercial"
+         style="background-image:url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80');">
       <div class="interior-visual">🏢</div>
       <div class="portfolio-overlay"><div class="portfolio-info"><h3>مقر شركة النخبة</h3><p>تجاري · جدة · 2024</p></div></div>
     </div>
-    <div class="portfolio-full-item p-bg-3" data-cat="hospitality">
+
+    <!-- 3. لاونج بذخ — ضيافة — لاونج فندقي -->
+    <div class="portfolio-full-item" data-cat="hospitality"
+         style="background-image:url('https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?w=800&q=80');">
       <div class="interior-visual">🏨</div>
       <div class="portfolio-overlay"><div class="portfolio-info"><h3>لاونج بذخ</h3><p>ضيافة · الدمام · 2024</p></div></div>
     </div>
-    <div class="portfolio-full-item p-bg-4" data-cat="exterior">
+
+    <!-- 4. حديقة القصر الملكي — خارجي — حديقة فيلا فاخرة -->
+    <div class="portfolio-full-item" data-cat="exterior"
+         style="background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80');">
       <div class="interior-visual">🌿</div>
       <div class="portfolio-overlay"><div class="portfolio-info"><h3>حديقة القصر الملكي</h3><p>خارجي · الرياض · 2023</p></div></div>
     </div>
-    <div class="portfolio-full-item p-bg-5" data-cat="residential">
+
+    <!-- 5. الجناح الملكي — سكني — غرفة نوم فاخرة -->
+    <div class="portfolio-full-item" data-cat="residential"
+         style="background-image:url('https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80');">
       <div class="interior-visual">🛏️</div>
       <div class="portfolio-overlay"><div class="portfolio-info"><h3>الجناح الملكي</h3><p>سكني · جدة · 2023</p></div></div>
     </div>
-    <div class="portfolio-full-item p-bg-6" data-cat="commercial">
+
+    <!-- 6. كافيه الفن — تجاري — مقهى أنيق -->
+    <div class="portfolio-full-item" data-cat="commercial"
+         style="background-image:url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&q=80');">
       <div class="interior-visual">☕</div>
       <div class="portfolio-overlay"><div class="portfolio-info"><h3>كافيه الفن</h3><p>تجاري · أبها · 2023</p></div></div>
     </div>
-    <div class="portfolio-full-item p-bg-1" data-cat="renovation">
+
+    <!-- 7. قصر النخيل — تجديد — فيلا كلاسيكية -->
+    <div class="portfolio-full-item" data-cat="renovation"
+         style="background-image:url('https://images.unsplash.com/photo-1613977257363-707ba9348227?w=1200&q=80');">
       <div class="interior-visual">🏡</div>
       <div class="portfolio-overlay"><div class="portfolio-info"><h3>قصر النخيل</h3><p>تجديد · الرياض · 2023</p></div></div>
     </div>
-    <div class="portfolio-full-item p-bg-2" data-cat="hospitality">
+
+    <!-- 8. مطعم الأصول — ضيافة — مطعم راقي -->
+    <div class="portfolio-full-item" data-cat="hospitality"
+         style="background-image:url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80');">
       <div class="interior-visual">🍽️</div>
       <div class="portfolio-overlay"><div class="portfolio-info"><h3>مطعم الأصول</h3><p>ضيافة · الدمام · 2022</p></div></div>
     </div>
-    <div class="portfolio-full-item p-bg-3" data-cat="residential">
+
+    <!-- 9. بنتهاوس جدة — سكني — بنتهاوس عصري -->
+    <div class="portfolio-full-item" data-cat="residential"
+         style="background-image:url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&q=80');">
       <div class="interior-visual">🛋️</div>
       <div class="portfolio-overlay"><div class="portfolio-info"><h3>بنتهاوس جدة</h3><p>سكني · جدة · 2022</p></div></div>
     </div>
-    <div class="portfolio-full-item p-bg-5" data-cat="exterior">
+
+    <!-- 10. منتجع النخبة — خارجي — حمام سباحة فاخر -->
+    <div class="portfolio-full-item" data-cat="exterior"
+         style="background-image:url('https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80');">
       <div class="interior-visual">🏊</div>
       <div class="portfolio-overlay"><div class="portfolio-info"><h3>منتجع النخبة</h3><p>خارجي · الطائف · 2022</p></div></div>
     </div>
-    <div class="portfolio-full-item p-bg-4" data-cat="commercial">
+
+    <!-- 11. متجر المجوهرات الفاخر — تجاري — متجر راقي -->
+    <div class="portfolio-full-item" data-cat="commercial"
+         style="background-image:url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80');">
       <div class="interior-visual">💎</div>
       <div class="portfolio-overlay"><div class="portfolio-info"><h3>متجر المجوهرات الفاخر</h3><p>تجاري · الرياض · 2022</p></div></div>
     </div>
-    <div class="portfolio-full-item p-bg-6" data-cat="renovation">
+
+    <!-- 12. فيلا التراث — تجديد — معمار تراثي -->
+    <div class="portfolio-full-item" data-cat="renovation"
+         style="background-image:url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800&q=80');">
       <div class="interior-visual">🏛️</div>
       <div class="portfolio-overlay"><div class="portfolio-info"><h3>فيلا التراث</h3><p>تجديد · مكة المكرمة · 2021</p></div></div>
     </div>
+
   </div>
 
   <div style="text-align:center;margin-top:4rem;" class="reveal">
